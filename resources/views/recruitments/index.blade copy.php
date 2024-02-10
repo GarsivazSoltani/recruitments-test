@@ -16,88 +16,80 @@
     </div>
 
     <div class="row g-5">
-          <h4 class="mb-3">مشخصات آزمون</h4>
+          <h4 class="mb-3">مشخصات فردی</h4>
           <form class="needs-validation" novalidate="">
             <div class="row g-3">
               <div class="col-sm-4">
-                <label for="firstName" class="form-label">نام آزمون</label>
+                <label for="firstName" class="form-label">نام</label>
                 <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
                 <div class="invalid-feedback">
                   نام معتبر مورد نیاز می‌باشد.
                 </div>
               </div>
+  
+              <div class="col-sm-4">
+                <label for="lastName" class="form-label">نام خانوادگی</label>
+                <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                  نام خانوادگی معتبر مورد نیاز می‌باشد.
+                </div>
+              </div>
+    
+              <div class="col-sm-4">
+                <label for="fatherName" class="form-label">نام پدر</label>
+                <input type="text" class="form-control" id="fatherName" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                  نام پدر معتبر مورد نیاز می‌باشد.
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <label for="code" class="form-label">کد ملی</label>
+                <input type="text" class="form-control" id="code" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                  کد ملی معتبر مورد نیاز می‌باشد.
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <label for="codePassport" class="form-label">شماره شناسنامه</label>
+                <input type="text" class="form-control" id="codePassport" placeholder="" value="" required="">
+                <div class="invalid-feedback">
+                  شماره شناسنامه معتبر مورد نیاز می‌باشد.
+                </div>
+              </div>
               
               <div class="col-md-4">
-                <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
-                <select class="form-select" id="grade" required="">
+                <label for="country" class="form-label">محل تولد</label>
+                <select class="form-select" id="country" required="">
                   <option value="">انتخاب کنید...</option>
-                  <option>دکتری</option>
-                  <option>کارشناسی ارشد</option>
-                  <option>کارشناسی</option>
-                  <option>کاردانی</option>
-                  <option>دیپلم</option>
-                  <option>زیر دیپلم</option>
+                  <option>آذربایجان شرقی</option>
+                  <option>آذربایجان غربی</option>
+                  <option>تهران</option>
                 </select>
                 <div class="invalid-feedback">
-                  Please select a valid grade.
+                  Please select a valid country.
+                </div>
+              </div>
+
+              <div class="col-sm-4">
+                <label for="email" class="form-label">آدرس پست الکترونیکی <span class="text-body-secondary">(اختیاری)</span></label>
+                <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                <div class="invalid-feedback">
+                  Please enter a valid email address for shipping updates.
                 </div>
               </div>
 
               <div class="col-md-5">
-                  <label for="country" class="form-label">رشته</label>
-                  <select class="form-select" id="country" required="">
-                      <option value="">انتخاب کنید...</option>
-                      <option>گرایش مهندسی نرم ‌افزار</option>
-                      <option>گرایش رایانش امن</option>
-                      <option>گرایش شبکه های کامپیوتری</option>
-                      <option>گرایش هوش مصنوعی</option>
-                      <option>گرایش معماری سیستم های کامپیوتر</option>
-                      <option>گرایش الگوریتم ها و محاسبات</option>
-
-                      <option>صنایع خودرو</option>
-                      <option>الکترونیک</option>
-                      <option>صنایع چوب</option>
-                      <option>صنایع کاغذ</option>
-                      <option>جوشکاری و بازرسی جوش</option>
-                      <option>حمل ونقل زمینی</option>
-                      <option>حمل ونقل دریایی</option>
-                      <option>حمل و نقل ریلی</option>
-                      <option>تاسیسات</option>
-                      <option>صنایع دریایی</option>
-                      <option>صنایع رنگ</option>
-                      <option>صنایع شیمیایی</option>
-                      <option>پلیمر</option>
-                      <option>پتروشیمی</option>
-                      <option>صنایع چرم وپوست و خز</option>
-                      <option>صنایع نساجی</option>
-                      <option>متالورژی</option>
-                      <option>فناوری ارتباطات</option>
-                      <option>مدیریت صنایع</option>
-                      <option>سرامیک</option>
-                      <option>مکانیک</option>
-                      <option>کنترل وابزار دقیق</option>
-                      <option>برق</option>
-                      <option>صنایع فلزی</option>
-                      <option>ساختمان</option>
-                      <option>معماری</option>
-                      <option>صنعت چاپ</option>
-                      <option>معدن</option>
-                      <option>امور اداری</option>
-                      <option>امور مالی و بازرگانی</option>
-                      <option>بهداشت و ایمنی</option>
-                      <option>فناوری اطلاعات</option>
-                      <option>مراقبت و زیبایی</option>
-                      <option>خدمات آموزشی</option>
-                      <option>صنایع پوشاک</option>
-                      <option>گردشگری</option>
-                      <option>هتلداری</option>
-                      <option>امورشیلات و آبزی پروری</option>
-                      <option>امور دام و ماکیان</option>
-                      <option>امور باغی</option>
-                  </select>
-                  <div class="invalid-feedback">
-                    Please select a valid country.
-                  </div>
+                <label for="country" class="form-label">استان</label>
+                <select class="form-select" id="country" required="">
+                  <option value="">انتخاب کنید...</option>
+                  <option>آذربایجان شرقی</option>
+                  <option>آذربایجان غربی</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
               </div>
   
               <div class="col-md-4">
