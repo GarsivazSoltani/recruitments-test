@@ -1,6 +1,6 @@
 {{-- <nav class="navbar navbar-expand-lg navbar-light bg-light " style="background-color: #e3f2fd;> --}}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="{{ route('home.welcome') }}">
         <img src="{{asset('img/logo.png')}}" width="60" height="60" class="d-inline-block align-top" alt="">
         سازمان آموزش فنی و حرفه‌ای کشور
     </a>
