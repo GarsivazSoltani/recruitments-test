@@ -1,10 +1,12 @@
 @extends('layouts.app')
 
+@section('title', __('public.recruitments test'))
+
 @section('content')
     <div class="container mt-3">
         <div class="alert alert-warning" role="alert">
             <h4 class="alert-heading">شرایط آزمون استخدامی</h4>
-            <p>یکی از مهم ترین شرایط لازم جهت ثبت نام در آزمون استخدامی 1402، دارا بودن حداقل 20 سال و حداکثر 40 سال برای فارغ التحصیلان کارشناسی و ارشد می باشد.</p>
+            <p>یکی از مهم ترین شرایط لازم جهت ثبت نام در آزمون استخدامی 1402، دارا بودن حداقل 20 سال و حداکثر 40 سال برای فارغ التحصیلان کارشناسی و کارشناسی ارشد می‌باشد.</p>
             <hr>
             <p class="mb-0">قوانین و شرایط استخدامی کشور</p>
         </div>
@@ -25,10 +27,10 @@
         <div class="col-sm-6 mb-3 mb-sm-0">
             <div class="card m-3">
                 <div class="card-header bg-success text-light">
-                پنجره ملی خدمات دولت
+                    @lang('public.government services')
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">ورود از طریق پنجره ملی خدمات دولت</h5>
+                    <h5 class="card-title">ورود از طریق @lang('public.government services')</h5>
                     <p class="card-text">سامانه دولت من یا همان پنجره ملی خدمات دولت هوشمند، مرکز ارائه خدمات گوناگون در حوزه های مختلف است که کاربران می توانند با ورود به پنا کاربری خود، به آن ها دسترسی داشته باشند. در نتیجه لازم است که افراد در این سایت ثبت نام کنند و به حساب کاربری خود بروند.</p>
                     <a href="#" class="btn btn-outline-success">ورود</a>
                 </div>
@@ -37,10 +39,10 @@
         <div class="col-sm-6 mb-3 mb-sm-0">
             <div class="card m-3">
                 <div class="card-header bg-warning text-light">
-                سازمان آموزش فنی و حرفه‌ای
+                @lang('public.tvto')
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">ورود از طریق پورتال سازمان آموزش فنی و حرفه‌ای کشور</h5>
+                    <h5 class="card-title">ورود از طریق پورتال @lang('public.tvto')</h5>
                     <p class="card-text">سامانه دولت من یا همان پنجره ملی خدمات دولت هوشمند، مرکز ارائه خدمات گوناگون در حوزه های مختلف است که کاربران می توانند با ورود به پنا کاربری خود، به آن ها دسترسی داشته باشند. در نتیجه لازم است که افراد در این سایت ثبت نام کنند و به حساب کاربری خود بروند.</p>
                     <a href="{{ route('recruitments.register') }}" class="btn btn-outline-warning">ورود</a>
                 </div>
