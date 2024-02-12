@@ -15,4 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('home.welcome');
-Route::get('register', [HomeController::class, 'registerTest'])->name('recruitments.register');
+Route::get('register-test', [HomeController::class, 'registerTestForm'])->name('recruitments.register.test.form');
+Route::post('register-test', [HomeController::class, 'registerTest'])->name('recruitments.register.test');
+Route::get('register-details', [HomeController::class, 'registerDetails'])->name('recruitments.register.details');
