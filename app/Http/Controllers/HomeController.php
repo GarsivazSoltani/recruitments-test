@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Nette\Utils\Arrays;
 use PhpParser\ErrorHandler\Collecting;
 
 class HomeController extends Controller
@@ -23,20 +24,34 @@ class HomeController extends Controller
         // dd($request->all());
         // return view('recruitments.register-details', compact('citys'));
 
-        // return redirect()->action('HomeController@registerDetails', ['$request' => $request->all()]);
-        return redirect()->route('recruitments.register.details', [$request]);
+        // $request = $request->all();
+        // return redirect()->refresh();
+        // dd($request->all()['testName']);
+        session()->put('reqAll', $request->all());
+        // return redirect()->route('recruitments.register.details');
+        return view('recruitments.register-details');
     }
 
-    public function registerDetails(Request $request)
+    // public function registerDetailsForm()
+    // {
+    //     // dd($request->all());
+    //     // return redirect()->refresh();
+    //     return view('recruitments.register-details');
+    // }
+
+    public function registerDetails()
     {
         // dd($request->testName);
-        $req = $request->all();
-        // dd($req);
-        $citys = DB::table('ct3')
-                ->select('ostanname')
-                ->groupBy('ostanname')
-                // ->orderBy('ostanname')
-                ->get();
-        return view('recruitments.register-details', compact('citys', 'req'));
+        // $request = $request->all();
+        $citys = collect(['ostanname' => 'Tehran']);
+
+        return view('recruitments.register-details');
+        // dd($citys);
+        // $citys = DB::table('ct3')
+        //         ->select('ostanname')
+        //         ->groupBy('ostanname')
+        //         // ->orderBy('ostanname')
+        //         ->get();
+        // return view('recruitments.register-details', compact('citys'));
     }
 }

@@ -6,7 +6,7 @@
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
         <div class="col-lg-12 p-3 p-lg-5 pt-lg-3">
             <h1 class="display-6 fw-bold lh-1 text-body-emphasis mb-5">درج مشخصات آزمون استخدام</h1>
-            <form class="needs-validation" method="POST" action="{{route('recruitments.register.test.form')}}">
+            <form class="needs-validation" method="POST" action="{{route('recruitments.register.test')}}">
                 @csrf
                 <div class="row g-3">
                     <div class="col-sm-6">
@@ -62,5 +62,34 @@
               <span class="badge bg-primary rounded-pill">800 نفر</span>
             </li>
         </ol>
+    </div>
+
+    <br>
+
+    <div class="list-group list-group-numbered">
+        <a ref="#" class="list-group-item list-group-item-action" aria-current="true">
+          <div class="d-flex w-100 justify-content-between ms-2 me-auto">
+            <h5 class="mb-1">آزمون استخدامی 1000 نفری هنر آموز</h5>
+            <span class="badge bg-success rounded-pill">1000 نفر</span>
+          </div>
+          <p class="mb-1">شرایط آزمون</p>
+          <small>شرایط آزمون</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">آزمون استخدامی 500 دانشجو</h5>
+            <span class="badge bg-primary rounded-pill">1000 نفر</span>
+          </div>
+          <p class="mb-1">شرایط آزمون</p>
+          <small class="text-muted">شرایط آزمون</small>
+        </a>
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">آزمون استخدامی 800 نفری</h5>
+            <span class="badge bg-primary rounded-pill">1000 نفر</span>
+          </div>
+          <p class="mb-1">شرایط آزمون</p>
+          <small class="text-muted">شرایط آزمون</small>
+        </a>
     </div>
 @endsection

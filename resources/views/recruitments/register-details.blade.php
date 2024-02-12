@@ -5,12 +5,11 @@
 @section('content')
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
         <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-            <h1 class="display-6 fw-bold lh-1 text-body-emphasis">آزمون استخدامی {{$req['testName']}}</h1>
-            <h1 class="display-6 fw-bold lh-1 text-body-emphasis">تعداد مورد نیاز {{$req['experience']}} نفر</h1>
-            <p class="lead">شرایط آزمون {{$req['testConditions']}}</p>
+            <h1 class="display-6 fw-bold lh-1 text-body-emphasis">آزمون استخدامی {{session('reqAll')['testName']}}</h1>
+            <h1 class="display-6 fw-bold lh-1 text-body-emphasis">تعداد مورد نیاز {{session('reqAll')['experience']}} نفر</h1>
+            <p class="lead">شرایط آزمون {{session('reqAll')['testConditions']}}</p>
             {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">بیشتر بدانید</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">درباره ما</button>
+                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">بازگشت</button>
             </div> --}}
         </div>
         <div class="col-lg-4 offset-lg-1 p-5 overflow-hidden">
@@ -19,37 +18,29 @@
     </div>
 
     <div class="row g-5">
-        <h4 class="mb-3">مشخصات آزمون</h4>
-        <form class="needs-validation" novalidate="" method="POST" action="{{ route('recruitments.register.details') }}">
+        <h4 class="mb-3">مشخصات شغل</h4>
+        <form class="needs-validation" method="POST" action="{{ route('recruitments.register.details') }}">
             @csrf
             <div class="row g-3">
-                <div class="col-sm-4">
-                    <label for="firstName" class="form-label">@lang('public.recruitments name')</label>
-                    <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
-                    <div class="invalid-feedback">
-                        نام معتبر مورد نیاز می‌باشد.
-                    </div>
-                </div>
-
                 <div class="col-md-4">
-                    <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
-                    <select class="form-select" id="grade" required="">
+                    <label for="careerField" class="form-label">رشته شغلی</label>
+                    <select class="form-select" id="careerField" name="careerField" required="">
                         <option value="">انتخاب کنید...</option>
-                        <option>دکتری</option>
-                        <option>کارشناسی ارشد</option>
-                        <option>کارشناسی</option>
-                        <option>کاردانی</option>
-                        <option>دیپلم</option>
-                        <option>زیر دیپلم</option>
+                        <option>کارشناس فناوری اطلاعات</option>
+                        <option>کارشناس شبکه</option>
+                        <option>زیر ساخت فناوری اطلاعات</option>
+                        <option>هوشمند سازی</option>
+                        <option>شبکه و امنیت</option>
+                        <option>امنیت اطلاعات</option>
                     </select>
                     <div class="invalid-feedback">
-                        Please select a valid grade.
+                        Please select a valid career field.
                     </div>
                 </div>
 
                 <div class="col-sm-4">
                     <label for="field" class="form-label">رشته تحصیلی</label>
-                    <select class="form-select" id="field" required="">
+                    <select class="form-select" id="field" name="field" required="">
                         <option value="">فناوری اطلاعات</option>
                         <option>صنایع خودرو</option>
                         <option>صنایع چوب</option>
@@ -97,26 +88,25 @@
                     </div>
                 </div>
 
-                    
-                {{-- <div class="col-md-4">
-                    <label for="orientation" class="form-label">رشته شغلی</label>
-                    <select class="form-select" id="orientation" required="">
+                <div class="col-md-4">
+                    <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
+                    <select class="form-select" id="grade" name="grade" required="">
                         <option value="">انتخاب کنید...</option>
-                        <option>کارشناس فناوری اطلاعات</option>
-                        <option>کارشناس شبکه</option>
-                        <option>زیر ساخت فناوری اطلاعات</option>
-                        <option>هوشمند سازی</option>
-                        <option>شبکه و امنیت</option>
-                        <option>امنیت اطلاعات</option>
+                        <option>دکتری</option>
+                        <option>کارشناسی ارشد</option>
+                        <option>کارشناسی</option>
+                        <option>کاردانی</option>
+                        <option>دیپلم</option>
+                        <option>زیر دیپلم</option>
                     </select>
                     <div class="invalid-feedback">
-                        Please select a valid orientation.
+                        Please select a valid grade.
                     </div>
-                </div> --}}
+                </div>
 
                 <div class="col-md-4">
                     <label for="orientation" class="form-label">گرایش</label>
-                    <select class="form-select" id="orientation" required="">
+                    <select class="form-select" id="orientation" name="grade" required="">
                         <option value="">انتخاب کنید...</option>
                         <option>گرایش مهندسی نرم ‌افزار</option>
                         <option>گرایش رایانش امن</option>
@@ -130,22 +120,22 @@
                     </div>
                 </div>
 
-                {{-- <div class="col-md-4">
+                <div class="col-md-4">
                     <label for="city" class="form-label">استان</label>
-                    <select class="form-select" id="city" required="">
+                    <select class="form-select" id="city" name="city" required="">
                         <option value="">تهران</option>
-                        @foreach ($citys as $city)
-                            <option>{{$city->ostanname}}</option>
-                        @endforeach
+                        <option>تهران</option>
+                        <option>اصفهان</option>
+                        <option>گیلان</option>
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid city.
                     </div>
-                </div> --}}
+                </div>
 
                 <div class="col-md-4">
                     <label for="state" class="form-label">شهر</label>
-                    <select class="form-select" id="state" required="">
+                    <select class="form-select" id="state" name="state" required="">
                         <option value="">انتخاب کنید...</option>
                         <option>ورامین</option>
                         <option>آزادی</option>
@@ -159,7 +149,7 @@
 
                 <div class="col-md-4">
                     <label for="sex" class="form-label">جنسیت</label>
-                    <select class="form-select" id="sex" required="">
+                    <select class="form-select" id="sex" name="sex" required="">
                         <option value="">انتخاب کنید...</option>
                         <option>زن</option>
                         <option>مرد</option>
@@ -170,8 +160,8 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label for="experience" class="form-label">حداقل سابقه کاری</label>
-                    <input type="number" class="form-control" id="experience" placeholder="" required="" min="1" max="5">
+                    <label for="experience" class="form-label">حداقل سابقه کاری مرتبط</label>
+                    <input type="number" class="form-control" id="experience" name="experience" placeholder="" required="" min="1" max="5">
                     <div class="invalid-feedback">
                         Please provide a valid experience.
                     </div>
@@ -179,7 +169,7 @@
 
                 <div class="col-md-4">
                     <label for="capacity" class="form-label">ظرفیت</label>
-                    <input type="number" class="form-control" id="capacity" placeholder="" required="" min="1" max="20">
+                    <input type="number" class="form-control" id="capacity" name="capacity" placeholder="" required="" min="1" max="20">
                     <div class="invalid-feedback">
                         Security code required
                     </div>
@@ -201,7 +191,40 @@
 
             <hr class="my-4"> --}}
 
-            <button class="btn btn-primary btn-lg mt-5" type="submit">ثبت سفارش</button>
+            <button class="btn btn-primary btn-lg mt-5" id="addJob" type="submit">ثبت شغل</button>
         </form>
+    </div>
+
+    <div class="row g-5" id="jobItems">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">ردیف</th>
+                <th scope="col">رشته شغلی</th>
+                <th scope="col">استان</th>
+                <th scope="col">ظرفیت</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>فناوری اطلاعات</td>
+                <td>تهران</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>حراست</td>
+                <td>اصفهان</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>نگهبان</td>
+                <td>گیلان</td>
+                <td>2</td>
+              </tr>
+            </tbody>
+        </table>
     </div>
 @endsection
