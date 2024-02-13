@@ -63,33 +63,4 @@
             </li>
         </ol>
     </div>
-
-    <br>
-
-    <div class="list-group list-group-numbered">
-        <a ref="#" class="list-group-item list-group-item-action" aria-current="true">
-          <div class="d-flex w-100 justify-content-between ms-2 me-auto">
-            <h5 class="mb-1">آزمون استخدامی 1000 نفری هنر آموز</h5>
-            <span class="badge bg-success rounded-pill">1000 نفر</span>
-          </div>
-          <p class="mb-1">شرایط آزمون</p>
-          <small>شرایط آزمون</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">آزمون استخدامی 500 دانشجو</h5>
-            <span class="badge bg-primary rounded-pill">1000 نفر</span>
-          </div>
-          <p class="mb-1">شرایط آزمون</p>
-          <small class="text-muted">شرایط آزمون</small>
-        </a>
-        <a href="#" class="list-group-item list-group-item-action">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-1">آزمون استخدامی 800 نفری</h5>
-            <span class="badge bg-primary rounded-pill">1000 نفر</span>
-          </div>
-          <p class="mb-1">شرایط آزمون</p>
-          <small class="text-muted">شرایط آزمون</small>
-        </a>
-    </div>
 @endsection

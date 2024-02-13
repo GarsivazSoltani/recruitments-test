@@ -20,7 +20,7 @@
 
     @include('partials.footer')
     @vite('resources/js/app.js')
-    <script src="js/bootstrap"></script>
+    {{-- <script src="js/bootstrapV5.js"></script> --}}
 </body>
 
 </html>

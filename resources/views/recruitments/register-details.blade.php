@@ -5,9 +5,10 @@
 @section('content')
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
         <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-            <h1 class="display-6 fw-bold lh-1 text-body-emphasis">آزمون استخدامی {{session('reqAll')['testName']}}</h1>
-            <h1 class="display-6 fw-bold lh-1 text-body-emphasis">تعداد مورد نیاز {{session('reqAll')['experience']}} نفر</h1>
-            <p class="lead">شرایط آزمون {{session('reqAll')['testConditions']}}</p>
+            {{-- <h1 class="display-6 fw-bold lh-1 text-body-emphasis">آزمون استخدامی {{session('reqAll')['testName']}}</h1> --}}
+            <h1 class="display-6 fw-bold lh-1 text-body-emphasis">آزمون استخدامی <span style="color: steelblue">{{session('reqAll')['testName']}}</span></h1>
+            <h1 class="display-6 fw-bold lh-1 text-body-emphasis">تعداد مورد نیاز <span style="color: steelblue">{{session('reqAll')['experience']}} نفر</span></h1>
+            <p class="lead">شرایط آزمون <span style="color: steelblue">{{session('reqAll')['testConditions']}}</span></p>
             {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
                 <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">بازگشت</button>
             </div> --}}
@@ -19,7 +20,7 @@
 
     <div class="row g-5">
         <h4 class="mb-3">مشخصات شغل</h4>
-        <form class="needs-validation" method="POST" action="{{ route('recruitments.register.details') }}">
+        <form class="needs-validation" id="addJob" method="POST" action="{{ route('recruitments.register.details') }}">
             @csrf
             <div class="row g-3">
                 <div class="col-md-4">
@@ -191,7 +192,7 @@
 
             <hr class="my-4"> --}}
 
-            <button class="btn btn-primary btn-lg mt-5" id="addJob" type="submit">ثبت شغل</button>
+            <button class="btn btn-primary btn-lg mt-5" type="submit">ثبت شغل</button>
         </form>
     </div>
 
@@ -205,26 +206,6 @@
                 <th scope="col">ظرفیت</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>فناوری اطلاعات</td>
-                <td>تهران</td>
-                <td>10</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>حراست</td>
-                <td>اصفهان</td>
-                <td>5</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>نگهبان</td>
-                <td>گیلان</td>
-                <td>2</td>
-              </tr>
-            </tbody>
         </table>
     </div>
 @endsection
