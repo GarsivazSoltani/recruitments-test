@@ -24,7 +24,7 @@
             @csrf
             <div class="row g-3">
                 <div class="col-md-4">
-                    <label for="careerField" class="form-label">رشته شغلی</label>
+                    <label for="careerField" class="form-label">عنوان شغلی</label>
                     <select class="form-select" id="careerField" name="careerField" required="">
                         <option value="">انتخاب کنید...</option>
                         <option>کارشناس فناوری اطلاعات</option>
@@ -125,9 +125,37 @@
                     <label for="city" class="form-label">استان</label>
                     <select class="form-select" id="city" name="city" required="">
                         <option value="">تهران</option>
-                        <option>تهران</option>
+                        <option>آذربایجان شرقی</option>
+                        <option>آذربایجان غربی</option>
+                        <option>اردبیل</option>
                         <option>اصفهان</option>
+                        <option>البرز</option>
+                        <option>ایلام</option>
+                        <option>بوشهر</option>
+                        <option>تهران</option>
+                        <option>چهارمحال و بختیاری</option>
+                        <option>خراسان جنوبی</option>
+                        <option>خراسان رضوی</option>
+                        <option>خراسان شمالی</option>
+                        <option>خوزستان</option>
+                        <option>زنجان</option>
+                        <option>سمنان</option>
+                        <option>سیستان و بلوچستان</option>
+                        <option>فارس</option>
+                        <option>قزوین</option>
+                        <option>قم</option>
+                        <option>کردستان</option>
+                        <option>کرمان</option>
+                        <option>کرمانشاه</option>
+                        <option>کهگیلویه و بویراحمد</option>
+                        <option>گلستان</option>
                         <option>گیلان</option>
+                        <option>لرستان</option>
+                        <option>مازندران</option>
+                        <option>مرکزی</option>
+                        <option>هرمزگان</option>
+                        <option>همدان</option>
+                        <option>یزد</option>
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid city.
@@ -138,10 +166,26 @@
                     <label for="state" class="form-label">شهر</label>
                     <select class="form-select" id="state" name="state" required="">
                         <option value="">انتخاب کنید...</option>
+                        <option>اسلامشهر</option>
+                        <option>پاکدشت</option>
+                        <option>پردیس</option>
+                        <option>تهران</option>
+                        <option>دماوند</option>
+                        <option>رباط کریم</option>
+                        <option>ری</option>
+                        <option>شمیرانات</option>
+                        <option>شهریار</option>
+                        <option>فیروزکوه</option>
+                        <option>شهر قدس</option>
+                        <option>ملارد</option>
+                        <option>پیشوا</option>
                         <option>ورامین</option>
-                        <option>آزادی</option>
-                        <option>پاسدارن</option>
-                        <option>تهران سر</option>
+                        <option>قرچك</option>
+                        <option>بهارستان</option>
+                        <option>پرند</option>
+                        <option>نسیم</option>
+                        <option>قرچک</option>
+                        <option>اندیشه</option>
                     </select>
                     <div class="invalid-feedback">
                         Please provide a valid state.
@@ -162,7 +206,7 @@
 
                 <div class="col-md-4">
                     <label for="experience" class="form-label">حداقل سابقه کاری مرتبط</label>
-                    <input type="number" class="form-control" id="experience" name="experience" placeholder="" required="" min="1" max="5">
+                    <input type="number" class="form-control" id="experience" name="experience" placeholder="" required="" min="1" max="50">
                     <div class="invalid-feedback">
                         Please provide a valid experience.
                     </div>
@@ -170,7 +214,7 @@
 
                 <div class="col-md-4">
                     <label for="capacity" class="form-label">ظرفیت</label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" placeholder="" required="" min="1" max="20">
+                    <input type="number" class="form-control" id="capacity" name="capacity" placeholder="" required="" min="1" max="10000">
                     <div class="invalid-feedback">
                         Security code required
                     </div>
@@ -206,6 +250,8 @@
                 <th scope="col">ظرفیت</th>
               </tr>
             </thead>
+            <tbody id="rowTableJob">
+            </tbody>
         </table>
     </div>
 @endsection

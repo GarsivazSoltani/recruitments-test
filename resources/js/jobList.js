@@ -12,7 +12,7 @@ btnJob.addEventListener("submit", function (e) {
 });
 
 
-let counter = 1;
+let counter = 0;
 function generateRow(e){
     counter++;
 
@@ -32,9 +32,6 @@ function generateRow(e){
     newTr.append(newTd2);
     newTr.append(newTd3);
     addTableRow.append(newTr);
-
-
-    // console.log(addTableRow);
 }
 
 

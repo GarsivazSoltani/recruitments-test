@@ -19,7 +19,7 @@
     
                     <div class="col-md-6">
                         <label for="experience" class="form-label">ظرفیت آزمون</label>
-                        <input type="number" class="form-control" id="experience" name="experience" placeholder="" required="" min="1" max="100">
+                        <input type="number" class="form-control" id="experience" name="experience" placeholder="" required="" min="1" max="99999">
                         <div class="invalid-feedback">
                             Please provide a valid experience.
                         </div>
