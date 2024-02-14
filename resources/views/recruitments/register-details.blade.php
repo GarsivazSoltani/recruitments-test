@@ -19,13 +19,13 @@
     </div>
 
     <div class="row g-5">
-        <h4 class="mb-3">مشخصات شغل</h4>
+        <h4 class="mb-1">مشخصات شغل</h4>
         <form class="needs-validation" id="addJob" method="POST" action="{{ route('recruitments.register.details') }}">
             @csrf
             <div class="row g-3">
                 <div class="col-md-4">
                     <label for="careerField" class="form-label">عنوان شغلی</label>
-                    <select class="form-select" id="careerField" name="careerField" required="">
+                    <select class="form-select" id="careerField" name="careerField" required="" value="{{ old('careerField') }}">
                         <option value="">انتخاب کنید...</option>
                         <option>کارشناس فناوری اطلاعات</option>
                         <option>کارشناس شبکه</option>
@@ -41,8 +41,8 @@
 
                 <div class="col-sm-4">
                     <label for="field" class="form-label">رشته تحصیلی</label>
-                    <select class="form-select" id="field" name="field" required="">
-                        <option value="">فناوری اطلاعات</option>
+                    <select class="form-select" id="field" name="field" required="" value="{{ old('field') }}">
+                        <option value="فناوری اطلاعات">فناوری اطلاعات</option>
                         <option>صنایع خودرو</option>
                         <option>صنایع چوب</option>
                         <option>صنایع کاغذ</option>
@@ -91,7 +91,7 @@
 
                 <div class="col-md-4">
                     <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
-                    <select class="form-select" id="grade" name="grade" required="">
+                    <select class="form-select" id="grade" name="grade" required="" value="{{ old('grade') }}">
                         <option value="">انتخاب کنید...</option>
                         <option>دکتری</option>
                         <option>کارشناسی ارشد</option>
@@ -107,7 +107,7 @@
 
                 <div class="col-md-4">
                     <label for="orientation" class="form-label">گرایش</label>
-                    <select class="form-select" id="orientation" name="grade" required="">
+                    <select class="form-select" id="orientation" name="orientation" required="" value="{{ old('orientation') }}">
                         <option value="">انتخاب کنید...</option>
                         <option>گرایش مهندسی نرم ‌افزار</option>
                         <option>گرایش رایانش امن</option>
@@ -123,8 +123,8 @@
 
                 <div class="col-md-4">
                     <label for="city" class="form-label">استان</label>
-                    <select class="form-select" id="city" name="city" required="">
-                        <option value="">تهران</option>
+                    <select class="form-select" id="city" name="city" required="" value="{{ old('city', 'تهران') }}">
+                        {{-- <option value="تهران"></option> --}}
                         <option>آذربایجان شرقی</option>
                         <option>آذربایجان غربی</option>
                         <option>اردبیل</option>
@@ -164,7 +164,7 @@
 
                 <div class="col-md-4">
                     <label for="state" class="form-label">شهر</label>
-                    <select class="form-select" id="state" name="state" required="">
+                    <select class="form-select" id="state" name="state" required="" value="{{ old('state') }}">
                         <option value="">انتخاب کنید...</option>
                         <option>اسلامشهر</option>
                         <option>پاکدشت</option>
@@ -194,27 +194,43 @@
 
                 <div class="col-md-4">
                     <label for="sex" class="form-label">جنسیت</label>
-                    <select class="form-select" id="sex" name="sex" required="">
-                        <option value="">انتخاب کنید...</option>
-                        <option>زن</option>
-                        <option>مرد</option>
+                    <select class="form-select" id="sex" name="sex" required="" value="{{ old('sex') }}">
+                        {{-- <option value="زن و مرد">زن و مرد</option> --}}
+                        <option>بدون تفکیک</option>
+                        <option>همراه با تفکیک</option>
                     </select>
                     <div class="invalid-feedback">
                         Please provide a valid sex.
                     </div>
                 </div>
-
+{{-- 
                 <div class="col-md-4">
                     <label for="experience" class="form-label">حداقل سابقه کاری مرتبط</label>
-                    <input type="number" class="form-control" id="experience" name="experience" placeholder="" required="" min="1" max="50">
+                    <input type="number" class="form-control" id="experience" name="experience" placeholder="" required="" min="1" max="50" value="{{ old('experience') }}">
                     <div class="invalid-feedback">
                         Please provide a valid experience.
                     </div>
+                </div> --}}
+
+                <div class="col-md-4" id="val1">
+                    <label for="capacity" class="form-label">ظرفیت</label>
+                    <input type="number" class="form-control" id="capacity" name="capacity" placeholder="" min="1" max="10000" value="{{ old('capacity') }}">
+                    <div class="invalid-feedback">
+                        Security code required
+                    </div>
                 </div>
 
-                <div class="col-md-4">
-                    <label for="capacity" class="form-label">ظرفیت</label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" placeholder="" required="" min="1" max="10000">
+                <div class="col-md-4 d-none" id="val2">
+                    <label for="capacityWoman" class="form-label">ظرفیت زن</label>
+                    <input type="number" class="form-control" id="capacityWoman" name="capacityWoman" placeholder="" min="1" max="10000" value="{{ old('capacityWoman') }}">
+                    <div class="invalid-feedback">
+                        Security code required
+                    </div>
+                </div>
+
+                <div class="col-md-4 d-none" id="val3">
+                    <label for="capacityMan" class="form-label">ظرفیت مرد</label>
+                    <input type="number" class="form-control" id="capacityMan" name="capacityMan" placeholder="" min="1" max="10000" value="{{ old('capacityMan') }}">
                     <div class="invalid-feedback">
                         Security code required
                     </div>
@@ -240,14 +256,16 @@
         </form>
     </div>
 
-    <div class="row g-5" id="jobItems">
+    <div class="row g-5 mt-5" id="jobItems">
         <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">ردیف</th>
                 <th scope="col">رشته شغلی</th>
                 <th scope="col">استان</th>
-                <th scope="col">ظرفیت</th>
+                <th scope="col">ظرفیت کلی</th>
+                <th scope="col">ظرفیت زن</th>
+                <th scope="col">ظرفیت مرد</th>
               </tr>
             </thead>
             <tbody id="rowTableJob">
