@@ -21,14 +21,17 @@ class HomeController extends Controller
 
     public function registerTest(Request $request)
     {
-        // dd($request->all());
-        // return view('recruitments.register-details', compact('citys'));
-
         // $request = $request->all();
         // return redirect()->refresh();
         // dd($request->all()['testName']);
+
         session()->put('reqAll', $request->all());
-        // return redirect()->route('recruitments.register.details');
+        // $citys = DB::table('ct3')
+        //         ->select('ostanname')
+        //         ->groupBy('ostanname')
+        //         // ->orderBy('ostanname')
+        //         ->get();
+        // return view('recruitments.register-details', compact('citys'));
         return view('recruitments.register-details');
     }
 
@@ -43,10 +46,11 @@ class HomeController extends Controller
     {
         // dd($request->testName);
         // $request = $request->all();
-        $citys = collect(['ostanname' => 'Tehran']);
+
+        // $citys = collect(['ostanname' => 'Tehran']);
 
         return view('recruitments.register-details');
-        // dd($citys);
+
         // $citys = DB::table('ct3')
         //         ->select('ostanname')
         //         ->groupBy('ostanname')

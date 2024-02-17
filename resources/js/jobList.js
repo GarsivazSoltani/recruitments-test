@@ -3,7 +3,7 @@ const addJobItem = document.getElementById('jobItems');
 const addTableRow = document.getElementById('rowTableJob');
 const careerFieldData = document.getElementById('careerField');
 const cityData = document.getElementById('city');
-const selectsex = document.getElementById('sex');
+const selectSex = document.getElementById('sex');
 const capacityAll = document.getElementById('capacity');
 const capacityWoman = document.getElementById('capacityWoman');
 const capacityMan = document.getElementById('capacityMan');
@@ -11,7 +11,7 @@ const val1 = document.getElementById('val1');
 const val2 = document.getElementById('val2');
 const val3 = document.getElementById('val3');
 
-selectsex.addEventListener('change', function (e) {
+selectSex.addEventListener('change', function (e) {
     // console.log(e.target.value);
     clearCapacity();
     if(e.target.value == 'بدون تفکیک'){
@@ -79,7 +79,6 @@ const fetchData = fetch('http://localhost:8002/register-test');
 fetchData.then((response) => {
     // دستورات مربوط به استفاده از پاسخ دریافت شده
     // console.log(response);
-    console.log(response);
 })
 .catch((error) => {
     // دستورات مدیریت خطا

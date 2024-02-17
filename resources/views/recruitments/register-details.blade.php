@@ -203,14 +203,6 @@
                         Please provide a valid sex.
                     </div>
                 </div>
-{{-- 
-                <div class="col-md-4">
-                    <label for="experience" class="form-label">حداقل سابقه کاری مرتبط</label>
-                    <input type="number" class="form-control" id="experience" name="experience" placeholder="" required="" min="1" max="50" value="{{ old('experience') }}">
-                    <div class="invalid-feedback">
-                        Please provide a valid experience.
-                    </div>
-                </div> --}}
 
                 <div class="col-md-4" id="val1">
                     <label for="capacity" class="form-label">ظرفیت</label>
