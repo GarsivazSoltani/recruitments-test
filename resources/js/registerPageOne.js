@@ -4,7 +4,7 @@ const experience = document.getElementById('experience');
 const testConditions = document.getElementById('testConditions');
 
 window.addEventListener('change', function (e) {
-    console.log(testName.value);
+    console.log('گرسی:', testName.value);
     let person = {
         name: testName.value,
         experience: experience.value,
@@ -13,6 +13,7 @@ window.addEventListener('change', function (e) {
     person = JSON.stringify(person);
     localStorage.setItem('user', person);
 });
+
 
 
 
