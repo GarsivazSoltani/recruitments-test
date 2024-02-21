@@ -11,19 +11,23 @@ const val1 = document.getElementById('val1');
 const val2 = document.getElementById('val2');
 const val3 = document.getElementById('val3');
 
-selectSex.addEventListener('change', function (e) {
-    // console.log(e.target.value);
-    clearCapacity();
-    if(e.target.value == 'بدون تفکیک'){
-        val1.setAttribute("class", 'col-md-4');
-        val2.setAttribute("class", 'd-none');
-        val3.setAttribute("class", 'd-none');
-    }else{
-        val1.setAttribute("class", 'd-none');
-        val2.setAttribute("class", 'col-md-4');
-        val3.setAttribute("class", 'col-md-4');
-    }
-});
+const state = document.getElementById('state');
+const zarfiyat = document.getElementById('zarfiyat');
+const zarfiyat1 = document.getElementById('zarfiyat1');
+const zarfiyat2 = document.getElementById('zarfiyat2');
+
+const title1 = document.getElementById('title1');
+const title2 = document.getElementById('title2');
+const title3 = document.getElementById('title3');
+
+
+let user = localStorage.getItem('user');
+user = JSON.parse(user);
+
+title1.innerHTML = `آزمون استخدامی <span style="color: steelblue">${user.name}</span>`;
+title2.innerHTML = `تعداد مورد نیاز <span style="color: steelblue">${user.experience} نفر</span>`;
+title3.innerHTML = `شرایط آزمون <span style="color: steelblue">${user.conditions}</span>`;
+
 
 btnJob.addEventListener("submit", function (e) {
     e.preventDefault();
@@ -46,16 +50,19 @@ function generateRow(e){
     newTd1.innerHTML = careerFieldData.value;
     let newTd2 = document.createElement('td');
     newTd2.innerHTML = cityData.value;
-
     let newTd3 = document.createElement('td');
+    newTd3.innerHTML = state.value;
+    
+
     let newTd4 = document.createElement('td');
     let newTd5 = document.createElement('td');
+    let newTd6 = document.createElement('td');
     if(capacityAll.value){
-        newTd3.innerHTML = capacityAll.value;
+        newTd4.innerHTML = capacityAll.value;
     }else{
-        newTd4.innerHTML = capacityWoman.value;
-        newTd5.innerHTML = capacityMan.value;
-        newTd3.innerHTML = Number(capacityWoman.value) + Number(capacityMan.value);
+        newTd5.innerHTML = capacityWoman.value;
+        newTd6.innerHTML = capacityMan.value;
+        newTd4.innerHTML = Number(capacityWoman.value) + Number(capacityMan.value);
     }
     
     newTr.append(newTh)
@@ -64,6 +71,7 @@ function generateRow(e){
     newTr.append(newTd3);
     newTr.append(newTd4);
     newTr.append(newTd5);
+    newTr.append(newTd6);
     addTableRow.append(newTr);
     
     clearCapacity();
@@ -75,25 +83,31 @@ function clearCapacity() {
     capacityMan.value = '';
 };
 
-const fetchData = fetch('http://localhost:8002/register-test');
-fetchData.then((response) => {
-    // دستورات مربوط به استفاده از پاسخ دریافت شده
-    // console.log(response);
-})
-.catch((error) => {
-    // دستورات مدیریت خطا
-    console.log('خطا');
+
+const SwitchSex = document.getElementById('SwitchSex');
+SwitchSex.addEventListener('change', function (e) {
+    clearCapacity();
+    if(e.target.checked){
+        val1.setAttribute("class", 'col-md-4');
+        val2.setAttribute("class", 'd-none');
+        val3.setAttribute("class", 'd-none');
+    }else{
+        val1.setAttribute("class", 'd-none');
+        val2.setAttribute("class", 'col-md-4');
+        val3.setAttribute("class", 'col-md-4');
+    }
 });
 
 
-
-// inputElem.addEventListener("keydown", function (event) {
-//     let newTodoValue = event.target.value.trim();
-  
-//     if (event.keyCode === 13) {
-//       if (newTodoValue) {
-//         inputElem.value = "";
-//         addNewTodo(newTodoValue);
-//       }
-//     }
-//   });
+const SwitchZarfiyat = document.getElementById('SwitchZarfiyat');
+zarfiyat2.setAttribute("class", 'd-none');
+SwitchZarfiyat.addEventListener('click', function (e) {
+    if(e.target.checked){
+        zarfiyat1.setAttribute("class", 'col-md-4');
+        zarfiyat2.setAttribute("class", 'd-none');
+        state.value = '';
+    }else{
+        zarfiyat1.setAttribute("class", 'col-md-4');
+        zarfiyat2.setAttribute("class", 'col-md-4');;
+    }
+});

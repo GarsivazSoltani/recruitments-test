@@ -3,27 +3,45 @@
 @section('title', __('public.tvto'))
 
 @section('content')
-
-    <div class="container mt-3">
-        <div class="row p-1 pb-0 pe-lg-0 pt-lg-1 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
-            <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
-                <h3 class="fw-bold lh-1 text-body-emphasis" id="title1">آزمون استخدامی <span style="color: steelblue">2</span></h1>
-                <h3 class="fw-bold lh-1 text-body-emphasis" id="title2">تعداد مورد نیاز <span style="color: steelblue">3 نفر</span></h1>
-                <p class="lead" id="title3">شرایط آزمون <span style="color: steelblue">4</span></p>
-            </div>
-            <div class="col-lg-4 offset-lg-1 p-5 overflow-hidden">
-                <img class="rounded-lg-3" src="./img/logo.png" alt="" width="240">
-            </div>
+    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
+        <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
+            {{-- <h1 class="display-6 fw-bold lh-1 text-body-emphasis">آزمون استخدامی {{session('reqAll')['testName']}}</h1> --}}
+            <h1 class="display-6 fw-bold lh-1 text-body-emphasis">آزمون استخدامی <span style="color: steelblue">{{session('reqAll')['testName']}}</span></h1>
+            <h1 class="display-6 fw-bold lh-1 text-body-emphasis">تعداد مورد نیاز <span style="color: steelblue">{{session('reqAll')['experience']}} نفر</span></h1>
+            <p class="lead">شرایط آزمون <span style="color: steelblue">{{session('reqAll')['testConditions']}}</span></p>
+            {{-- <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3">
+                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2 fw-bold">بازگشت</button>
+            </div> --}}
+        </div>
+        <div class="col-lg-4 offset-lg-1 p-5 overflow-hidden">
+            <img class="rounded-lg-3" src="{{ asset('img/logo.png') }}" alt="" width="320">
+        </div>
     </div>
 
     <div class="row g-5">
         <h4 class="mb-1">مشخصات شغل</h4>
-        <form class="needs-validation" id="addJob" method="" action="">
+        <form class="needs-validation" id="addJob" method="POST" action="{{ route('recruitments.register.details') }}">
+            @csrf
             <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="careerField" class="form-label">عنوان شغلی</label>
+                    <select class="form-select" id="careerField" name="careerField" required="" value="{{ old('careerField') }}">
+                        <option value="">انتخاب کنید...</option>
+                        <option>کارشناس فناوری اطلاعات</option>
+                        <option>کارشناس شبکه</option>
+                        <option>زیر ساخت فناوری اطلاعات</option>
+                        <option>هوشمند سازی</option>
+                        <option>شبکه و امنیت</option>
+                        <option>امنیت اطلاعات</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid career field.
+                    </div>
+                </div>
 
                 <div class="col-sm-4">
                     <label for="field" class="form-label">رشته تحصیلی</label>
-                    <select class="form-select" id="field" name="field" value="">
+                    <select class="form-select" id="field" name="field" required="" value="{{ old('field') }}">
                         <option value="فناوری اطلاعات">فناوری اطلاعات</option>
                         <option>صنایع خودرو</option>
                         <option>صنایع چوب</option>
@@ -72,24 +90,24 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label for="careerField" class="form-label">عنوان شغلی</label>
-                    <select class="form-select" id="careerField" name="careerField" value="">
+                    <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
+                    <select class="form-select" id="grade" name="grade" required="" value="{{ old('grade') }}">
                         <option value="">انتخاب کنید...</option>
-                        <option>کارشناس فناوری اطلاعات</option>
-                        <option>کارشناس شبکه</option>
-                        <option>زیر ساخت فناوری اطلاعات</option>
-                        <option>هوشمند سازی</option>
-                        <option>شبکه و امنیت</option>
-                        <option>امنیت اطلاعات</option>
+                        <option>دکتری</option>
+                        <option>کارشناسی ارشد</option>
+                        <option>کارشناسی</option>
+                        <option>کاردانی</option>
+                        <option>دیپلم</option>
+                        <option>زیر دیپلم</option>
                     </select>
                     <div class="invalid-feedback">
-                        Please select a valid career field.
+                        Please select a valid grade.
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <label for="orientation" class="form-label">گرایش</label>
-                    <select class="form-select" id="orientation" name="orientation" value="">
+                    <select class="form-select" id="orientation" name="orientation" required="" value="{{ old('orientation') }}">
                         <option value="">انتخاب کنید...</option>
                         <option>گرایش مهندسی نرم ‌افزار</option>
                         <option>گرایش رایانش امن</option>
@@ -104,42 +122,9 @@
                 </div>
 
                 <div class="col-md-4">
-                    <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
-                    <select class="form-select" id="grade" name="grade" value="">
-                        <option value="">انتخاب کنید...</option>
-                        <option>دکتری</option>
-                        <option>کارشناسی ارشد</option>
-                        <option>کارشناسی</option>
-                        <option>کاردانی</option>
-                        <option>دیپلم</option>
-                        <option>زیر دیپلم</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a valid grade.
-                    </div>
-                </div>
-
-                <hr class="my-4">
-
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="SwitchZarfiyat" checked>
-                    <label class="form-check-label" for="SwitchZarfiyat">ظرفیت بر اساس استان</label>
-                </div>
-
-                <!-- <div class="col-md-4">
-                    <label for="zarfiyat" class="form-label">ظرفیت بر اساس</label>
-                    <select class="form-select" id="zarfiyat" name="zarfiyat" value="">
-                        <option>استان</option>
-                        <option>شهرستان</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please provide a valid zarfiyat.
-                    </div>
-                </div> -->
-
-                <div class="col-md-4" id="zarfiyat1">
                     <label for="city" class="form-label">استان</label>
-                    <select class="form-select" id="city" name="city" value="">
+                    <select class="form-select" id="city" name="city" required="" value="{{ old('city', 'تهران') }}">
+                        {{-- <option value="تهران"></option> --}}
                         <option>آذربایجان شرقی</option>
                         <option>آذربایجان غربی</option>
                         <option>اردبیل</option>
@@ -177,9 +162,9 @@
                     </div>
                 </div>
 
-                <div class="col-md-4" id="zarfiyat2">
+                <div class="col-md-4">
                     <label for="state" class="form-label">شهر</label>
-                    <select class="form-select" id="state" name="state" value="">
+                    <select class="form-select" id="state" name="state" required="" value="{{ old('state') }}">
                         <option value="">انتخاب کنید...</option>
                         <option>اسلامشهر</option>
                         <option>پاکدشت</option>
@@ -207,27 +192,21 @@
                     </div>
                 </div>
 
-                <hr class="my-4">
-
-                <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="SwitchSex" checked>
-                    <label class="form-check-label" for="SwitchSex">جنسیت بدون تفکیک</label>
-                </div>
-
-                <!-- <div class="col-md-4">
+                <div class="col-md-4">
                     <label for="sex" class="form-label">جنسیت</label>
-                    <select class="form-select" id="sex" name="sex" value="">
+                    <select class="form-select" id="sex" name="sex" required="" value="{{ old('sex') }}">
+                        {{-- <option value="زن و مرد">زن و مرد</option> --}}
                         <option>بدون تفکیک</option>
                         <option>همراه با تفکیک</option>
                     </select>
                     <div class="invalid-feedback">
                         Please provide a valid sex.
                     </div>
-                </div> -->
+                </div>
 
                 <div class="col-md-4" id="val1">
                     <label for="capacity" class="form-label">ظرفیت</label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" placeholder="" min="1" max="10000" value="">
+                    <input type="number" class="form-control" id="capacity" name="capacity" placeholder="" min="1" max="10000" value="{{ old('capacity') }}">
                     <div class="invalid-feedback">
                         Security code required
                     </div>
@@ -235,7 +214,7 @@
 
                 <div class="col-md-4 d-none" id="val2">
                     <label for="capacityWoman" class="form-label">ظرفیت زن</label>
-                    <input type="number" class="form-control" id="capacityWoman" name="capacityWoman" placeholder="" min="1" max="10000" value="">
+                    <input type="number" class="form-control" id="capacityWoman" name="capacityWoman" placeholder="" min="1" max="10000" value="{{ old('capacityWoman') }}">
                     <div class="invalid-feedback">
                         Security code required
                     </div>
@@ -243,14 +222,27 @@
 
                 <div class="col-md-4 d-none" id="val3">
                     <label for="capacityMan" class="form-label">ظرفیت مرد</label>
-                    <input type="number" class="form-control" id="capacityMan" name="capacityMan" placeholder="" min="1" max="10000" value="">
+                    <input type="number" class="form-control" id="capacityMan" name="capacityMan" placeholder="" min="1" max="10000" value="{{ old('capacityMan') }}">
                     <div class="invalid-feedback">
                         Security code required
                     </div>
                 </div>
             </div>
 
-            <hr class="my-4">
+            {{-- <hr class="my-4"> --}}
+
+            {{-- <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="same-address">
+                <label class="form-check-label" for="same-address">Shipping address is the same as my billing
+                    address</label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="save-info">
+                <label class="form-check-label" for="save-info">Save this information for next time</label>
+            </div>
+
+            <hr class="my-4"> --}}
 
             <button class="btn btn-primary btn-lg mt-5" type="submit">ثبت شغل</button>
         </form>
@@ -261,9 +253,8 @@
             <thead>
               <tr>
                 <th scope="col">ردیف</th>
-                <th scope="col">عنوان شغلی</th>
+                <th scope="col">رشته شغلی</th>
                 <th scope="col">استان</th>
-                <th scope="col">شهرستان</th>
                 <th scope="col">ظرفیت کلی</th>
                 <th scope="col">ظرفیت زن</th>
                 <th scope="col">ظرفیت مرد</th>
@@ -274,4 +265,3 @@
         </table>
     </div>
 @endsection
-@vite('resources/js/jobList.js')

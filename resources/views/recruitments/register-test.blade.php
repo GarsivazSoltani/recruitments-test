@@ -6,7 +6,7 @@
     <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
         <div class="col-lg-12 p-3 p-lg-5 pt-lg-3">
             <h1 class="display-6 fw-bold lh-1 text-body-emphasis mb-5">درج مشخصات آزمون استخدام</h1>
-            <form class="needs-validation" method="POST" action="{{route('recruitments.register.test')}}">
+            <form class="needs-validation" method="POST" action="{{route('recruitments.register.details.form')}}">
                 @csrf
                 <div class="row g-3">
                     <div class="col-sm-6">
@@ -32,7 +32,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-primary btn-lg mt-3" type="submit">ثبت آزمون</button>
+                <button class="btn btn-primary btn-lg mt-3" id="btnRegister" type="submit">ثبت آزمون</button>
             </form>
         </div>
     </div>
@@ -64,3 +64,5 @@
         </ol>
     </div>
 @endsection
+
+@vite('resources/js/registerPageOne.js')
