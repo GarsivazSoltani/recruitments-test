@@ -63,6 +63,6 @@
             </li>
         </ol>
     </div>
+    {{-- <script src="{{ asset('js/registerPageOne.js') }}"></script> --}}
+    @vite('resources/js/registerPageOne.js')
 @endsection
-
-@vite('resources/js/registerPageOne.js')
