@@ -273,6 +273,6 @@
             </tbody>
         </table>
     </div>
-    {{-- <script src="{{ asset('js/jobList.js') }}"></script> --}}
-    @vite('resources/js/jobList.js')
+    <script src="{{ asset('js/jobList.js') }}"></script>
+    {{-- @vite(asset('recruitment-test/resources/js/jobList.js')) --}}
 @endsection
