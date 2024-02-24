@@ -25,4 +25,6 @@ Route::prefix('job')->group(function (){
     Route::get('', [JobController::class, 'index'])->name('job.index');
     Route::get('create', [JobController::class, 'create'])->name('job.create');
     Route::post('', [JobController::class, 'store']);
+
+    // Route::get('{id}/edit', [job])
 });
