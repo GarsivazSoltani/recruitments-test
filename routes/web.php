@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\RecruitmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,9 +23,10 @@ Route::get('/', [HomeController::class, 'home'])->name('home.welcome');
 // Route::post('register-details', [HomeController::class, 'registerDetails'])->name('recruitments.register.details');
 
 Route::prefix('job')->group(function (){
-    Route::get('', [JobController::class, 'index'])->name('job.index');
-    Route::get('create', [JobController::class, 'create'])->name('job.create');
-    Route::post('', [JobController::class, 'store']);
+    Route::get('', [RecruitmentController::class, 'index'])->name('job.index');
+    Route::get('create', [RecruitmentController::class, 'create'])->name('job.create');
+    Route::post('', [RecruitmentController::class, 'store'])->name('job.store');
 
-    // Route::get('{id}/edit', [job])
+    Route::get('{id}/edit', [RecruitmentController::class, 'edit'])->name('job.edit');
+    Route::put('{id}', [RecruitmentController::class, 'update'])->name('job.update');
 });
