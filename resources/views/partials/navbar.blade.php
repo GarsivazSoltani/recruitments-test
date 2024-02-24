@@ -12,7 +12,7 @@
         @guest
             <a class="btn btn-outline-info m-2" href="{{ route('home.welcome') }}">@lang('public.main page')</a>
             <a class="btn btn-outline-info m-2" href="#">@lang('public.government services')</a>
-            <a class="btn btn-outline-info m-2" href="{{ route('recruitments.register.test.form') }}">@lang('public.tvto')</a>
+            <a class="btn btn-outline-info m-2" href="{{ route('job.index') }}">@lang('public.tvto')</a>
         @endguest
     </div>
 </nav>

@@ -4,6 +4,9 @@
 
 @section('content')
 
+    {{-- @if ($dataForm->has('testName'))
+        {{$dataForm->testName}}
+    @endif --}}
     <div class="container mt-3">
         <div class="row p-1 pb-0 pe-lg-0 pt-lg-1 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
             <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
@@ -273,6 +276,7 @@
             </tbody>
         </table>
     </div>
-    <script src="{{ asset('js/jobList.js') }}"></script>
+    {{-- <script src="{{ asset('js/jobList.js') }}"></script> --}}
     {{-- @vite(asset('recruitment-test/resources/js/jobList.js')) --}}
+    @vite('/resources/js/jobList.js')
 @endsection

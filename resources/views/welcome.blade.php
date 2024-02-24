@@ -44,7 +44,7 @@
                 <div class="card-body">
                     <h5 class="card-title">ورود از طریق پورتال @lang('public.tvto')</h5>
                     <p class="card-text">سامانه دولت من یا همان پنجره ملی خدمات دولت هوشمند، مرکز ارائه خدمات گوناگون در حوزه های مختلف است که کاربران می توانند با ورود به پنا کاربری خود، به آن ها دسترسی داشته باشند. در نتیجه لازم است که افراد در این سایت ثبت نام کنند و به حساب کاربری خود بروند.</p>
-                    <a href="{{ route('recruitments.register.test.form') }}" class="btn btn-outline-warning">ورود</a>
+                    <a href="{{ route('job.index') }}" class="btn btn-outline-warning">ورود</a>
                 </div>
             </div>
         </div>

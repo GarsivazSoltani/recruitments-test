@@ -16,6 +16,8 @@ class HomeController extends Controller
 
     public function registerTestForm()
     {
+        // dd('Garsi');
+        // $dataForm = $request->all();
         return view('recruitments.register-test');
     }
 
@@ -24,7 +26,9 @@ class HomeController extends Controller
         // $request = $request->all();
         // return redirect()->refresh();
         // dd($request->all()['testName']);
-
+        dd('Garsi');
+        dd($request->all());
+        $dataForm = $request->all();
         session()->put('reqAll', $request->all());
         // $citys = DB::table('ct3')
         //         ->select('ostanname')
@@ -32,15 +36,15 @@ class HomeController extends Controller
         //         // ->orderBy('ostanname')
         //         ->get();
         // return view('recruitments.register-details', compact('citys'));
-        return view('recruitments.register-details');
+        return view('recruitments.register-details', compact('dataForm'));
     }
 
-    // public function registerDetailsForm()
-    // {
-    //     // dd($request->all());
-    //     // return redirect()->refresh();
-    //     return view('recruitments.register-details');
-    // }
+    public function registerDetailsForm(Request $request)
+    {
+        dd($request->all());
+        // return redirect()->refresh();
+        return view('recruitments.register-details');
+    }
 
     public function registerDetails()
     {
