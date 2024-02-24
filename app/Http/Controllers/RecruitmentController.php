@@ -16,7 +16,7 @@ class RecruitmentController extends Controller
     public function show($id)
     {
         $recruitment = DB::table('recruitments')->find($id);
-        return view();
+        return view('job.show', compact('recruitment'));
     }
 
     public function create()
