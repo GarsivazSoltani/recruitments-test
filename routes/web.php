@@ -34,4 +34,7 @@ Route::prefix('job')->group(function (){
 
     // show
     Route::get('{id}', [RecruitmentController::class, 'show'])->name('job.show');
+
+    // delete
+    Route::delete('{id}', [RecruitmentController::class, 'destroy']);
 });

@@ -61,8 +61,9 @@ class RecruitmentController extends Controller
         return redirect('job');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
-
+        DB::table('recruitments')->where('id', $id)->delete();
+        return back();
     }
 }
