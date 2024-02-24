@@ -13,9 +13,10 @@ class RecruitmentController extends Controller
         return view('job.index', compact('recruitments'));
     }
 
-    public function show()
+    public function show($id)
     {
-
+        $recruitment = DB::table('recruitments')->find($id);
+        return view();
     }
 
     public function create()
@@ -45,9 +46,19 @@ class RecruitmentController extends Controller
         return view('job.edit', compact('recruitment'));
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
+        $testName = $request->testName;
+        $experience = $request->experience;
+        $testConditions = $request->testConditions;
 
+        DB::table('recruitments')->where('id', $id)->update([
+            'title' => $testName,
+            'total' => $experience,
+            'eligibility' => $testConditions
+        ]);
+
+        return redirect('job');
     }
 
     public function destroy()
