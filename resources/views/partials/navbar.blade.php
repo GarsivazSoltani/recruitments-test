@@ -11,8 +11,8 @@
     <div class="auth-btn collapse justify-content-end navbar-collapse">
         @guest
             <a class="btn btn-outline-info m-2" href="{{ route('home.welcome') }}">@lang('public.main page')</a>
-            <a class="btn btn-outline-info m-2" href="#">@lang('public.government services')</a>
-            <a class="btn btn-outline-info m-2" href="{{ route('job.index') }}">@lang('public.tvto')</a>
+            <a class="btn btn-outline-success m-2" href="{{ route('job.create') }}">@lang('public.registration of employment advertisement')</a>
+            <a class="btn btn-outline-warning m-2" href="{{ route('job.index') }}">@lang('public.show job advertisement')</a>
         @endguest
     </div>
 </nav>

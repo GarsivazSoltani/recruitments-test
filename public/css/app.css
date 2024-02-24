@@ -1,0 +1,42 @@
+@font-face {
+    font-family: Vazir;
+    src: url('../fonts/Vazir-Medium.eot');
+    src: url('../fonts/Vazir-Medium.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/Vazir-Medium.woff2') format('woff2'),
+        url('../fonts/Vazir-Medium.woff') format('woff'),
+        url('../fonts/Vazir-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+body {
+    font-family: Vazir;
+}
+
+
+.content {
+    text-align: center;
+    margin-top: 80px;
+}
+
+.title {
+    font-size: 60px;
+}
+
+.course-title {
+    background-color: #fff;
+    color: #636b6f;
+    font-weight: 300;
+    margin: 0;
+}
+
+.library-title {
+    color: #636b6f;
+    font-weight: 200;
+    font-size: 25px;
+}
+
+.logout-btn {
+    left: 0;
+}
