@@ -22,18 +22,18 @@ Route::get('/', [HomeController::class, 'home'])->name('home.welcome');
 // Route::get('register-details', [HomeController::class, 'registerDetailsForm'])->name('recruitments.register.details.form');
 // Route::post('register-details', [HomeController::class, 'registerDetails'])->name('recruitments.register.details');
 
-Route::prefix('job')->group(function (){
+Route::prefix('recruitment')->group(function (){
     // create
-    Route::get('', [RecruitmentController::class, 'index'])->name('job.index');
-    Route::get('create', [RecruitmentController::class, 'create'])->name('job.create');
-    Route::post('', [RecruitmentController::class, 'store'])->name('job.store');
+    Route::get('', [RecruitmentController::class, 'index'])->name('recruitment.index');
+    Route::get('create', [RecruitmentController::class, 'create'])->name('recruitment.create');
+    Route::post('', [RecruitmentController::class, 'store'])->name('recruitment.store');
 
     // edit
-    Route::get('{id}/edit', [RecruitmentController::class, 'edit'])->name('job.edit');
-    Route::put('{id}', [RecruitmentController::class, 'update'])->name('job.update');
+    Route::get('{id}/edit', [RecruitmentController::class, 'edit'])->name('recruitment.edit');
+    Route::put('{id}', [RecruitmentController::class, 'update'])->name('recruitment.update');
 
     // show
-    Route::get('{id}', [RecruitmentController::class, 'show'])->name('job.show');
+    Route::get('{id}', [RecruitmentController::class, 'show'])->name('recruitment.show');
 
     // delete
     Route::delete('{id}', [RecruitmentController::class, 'destroy']);

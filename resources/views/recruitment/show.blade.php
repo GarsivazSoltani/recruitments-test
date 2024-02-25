@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn btn-primary btn-lg mt-3" id="btnRegister" type="submit">بازگشت</button>
+            <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-lg mt-3">بازگشت</a>
         </div>
     </div>
 

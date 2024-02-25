@@ -32,7 +32,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@lang('public.registration of employment advertisement')</h5>
                     <p class="card-text">سامانه دولت من یا همان پنجره ملی خدمات دولت هوشمند، مرکز ارائه خدمات گوناگون در حوزه های مختلف است که کاربران می توانند با ورود به پنا کاربری خود، به آن ها دسترسی داشته باشند. در نتیجه لازم است که افراد در این سایت ثبت نام کنند و به حساب کاربری خود بروند.</p>
-                    <a href="{{ route('job.create', ['id'=>1]) }}" class="btn btn-outline-success">ثبت نام</a>
+                    <a href="{{ route('recruitment.create', ['id'=>1]) }}" class="btn btn-outline-success">ثبت نام</a>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@lang('public.show job advertisement')</h5>
                     <p class="card-text">سامانه دولت من یا همان پنجره ملی خدمات دولت هوشمند، مرکز ارائه خدمات گوناگون در حوزه های مختلف است که کاربران می توانند با ورود به پنا کاربری خود، به آن ها دسترسی داشته باشند. در نتیجه لازم است که افراد در این سایت ثبت نام کنند و به حساب کاربری خود بروند.</p>
-                    <a href="{{ route('job.index') }}" class="btn btn-outline-warning">آگهی‌ها</a>
+                    <a href="{{ route('recruitment.index') }}" class="btn btn-outline-warning">آگهی‌ها</a>
                 </div>
             </div>
         </div>

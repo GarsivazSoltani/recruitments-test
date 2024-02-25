@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Recruitment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -9,61 +10,76 @@ class RecruitmentController extends Controller
 {
     public function index()
     {
-        $recruitments = DB::table('recruitments')->get();
-        return view('job.index', compact('recruitments'));
+        // $recruitments = DB::table('recruitments')->get();
+        $recruitments = Recruitment::all();
+        return view('recruitment.index', compact('recruitments'));
     }
 
     public function show($id)
     {
-        $recruitment = DB::table('recruitments')->find($id);
-        return view('job.show', compact('recruitment'));
+        // $recruitment = DB::table('recruitments')->find($id);
+        $recruitment = Recruitment::find($id);
+        return view('recruitment.show', compact('recruitment'));
     }
 
     public function create()
     {
-        return view('job.create');
+        return view('recruitment.create');
     }
 
     public function store(Request $request)
     {
-        $testName = $request->testName;
-        $experience = $request->experience;
-        $testConditions = $request->testConditions;
+        // $testName = $request->testName;
+        // $experience = $request->experience;
+        // $testConditions = $request->testConditions;
 
-        // dd($request);
-        DB::table('recruitments')->insert([
-            'title' => $testName,
-            'total' => $experience,
-            'eligibility' => $testConditions
-        ]);
+        // DB::table('recruitments')->insert([
+        //     'title' => $testName,
+        //     'total' => $experience,
+        //     'eligibility' => $testConditions
+        // ]);
+
+        $recruitment = new Recruitment();
+        $recruitment->title = $request->testName;
+        $recruitment->total = $request->experience;
+        $recruitment->eligibility = $request->testConditions;
+        $recruitment->save();
 
         return back();
     }
 
     public function edit($id)
     {
-        $recruitment = DB::table('recruitments')->find($id);
-        return view('job.edit', compact('recruitment'));
+        // $recruitment = DB::table('recruitments')->find($id);
+        $recruitment = Recruitment::find($id);
+        return view('recruitment.edit', compact('recruitment'));
     }
 
     public function update(Request $request, $id)
     {
-        $testName = $request->testName;
-        $experience = $request->experience;
-        $testConditions = $request->testConditions;
+        // $testName = $request->testName;
+        // $experience = $request->experience;
+        // $testConditions = $request->testConditions;
 
-        DB::table('recruitments')->where('id', $id)->update([
-            'title' => $testName,
-            'total' => $experience,
-            'eligibility' => $testConditions
-        ]);
+        // DB::table('recruitments')->where('id', $id)->update([
+        //     'title' => $testName,
+        //     'total' => $experience,
+        //     'eligibility' => $testConditions
+        // ]);
 
-        return redirect('job');
+        $recruitment = Recruitment::find($id);
+        $recruitment->title = $request->testName;
+        $recruitment->total = $request->experience;
+        $recruitment->eligibility = $request->testConditions;
+        $recruitment->save();
+
+        return redirect('recruitment');
     }
 
     public function destroy($id)
     {
-        DB::table('recruitments')->where('id', $id)->delete();
+        // DB::table('recruitments')->where('id', $id)->delete();
+        Recruitment::find($id)->delete();
         return back();
     }
 }
