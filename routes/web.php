@@ -34,6 +34,7 @@ Route::prefix('recruitment')->group(function (){
 
     // show
     Route::get('{id}', [RecruitmentController::class, 'show'])->name('recruitment.show');
+    Route::post('{id}/conditions', [RecruitmentController::class, 'storeConditions'])->name('recruitment.conditions');
 
     // delete
     Route::delete('{id}', [RecruitmentController::class, 'destroy']);

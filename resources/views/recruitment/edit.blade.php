@@ -39,5 +39,5 @@
     </div>
 
     {{-- <script src="{{ asset('js/registerPageOne.js') }}"></script> --}}
-    @vite('/resources/js/registerPageOne.js')
+    {{-- @vite('/resources/js/registerPageOne.js') --}}
 @endsection

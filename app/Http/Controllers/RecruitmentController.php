@@ -82,4 +82,21 @@ class RecruitmentController extends Controller
         Recruitment::find($id)->delete();
         return back();
     }
+
+    public function storeConditions(Request $request, $recruitmentId)
+    {
+        $recruitment = Recruitment::find($recruitmentId);
+        // dd($request);
+        $recruitment->conditions()->create([
+            'job_title' => $request->careerField, // عنوان شغلی
+            'field_of_study' => $request->field, // رشته تحصیلی
+            'orientation' => $request->orientation, // گرایش
+            'grade' => $request->grade, // مقطع تحصیلی
+            'state' => $request->state, // استان
+            'city' => $request->city, // شهر
+            'capacity' => Array($request->capacity) // ظرفیت
+        ]);
+        $recruitment->save();
+        return back();
+    }
 }
