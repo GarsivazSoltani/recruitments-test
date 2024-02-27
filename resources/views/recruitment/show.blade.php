@@ -37,17 +37,18 @@
         <h4 class="mb-1">مشخصات شغل</h4>
         <form class="needs-validation" id="addJob" method="POST" action="{{ route('recruitment.index') }}/{{$recruitment->id}}/conditions">
             @csrf
+            <script type="text/javascript">
+                let data = {!! $works->toJson() !!}
+                // console.log('Garsi:', data);
+            </script>
             <div class="row g-3">
                 <div class="col-md-4">
                     <label for="careerField" class="form-label">عنوان شغلی</label>
                     <select class="form-select" id="careerField" name="careerField" value="">
-                        <option value="">انتخاب کنید...</option>
-                        <option>کارشناس فناوری اطلاعات</option>
-                        <option>کارشناس شبکه</option>
-                        <option>زیر ساخت فناوری اطلاعات</option>
-                        <option>هوشمند سازی</option>
-                        <option>شبکه و امنیت</option>
-                        <option>امنیت اطلاعات</option>
+                        {{-- <option value="">انتخاب کنید...</option> --}}
+                        @foreach ($works as $work)
+                            <option value="{{$work->id}}">{{$work->title}}</option>
+                        @endforeach
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid career field.
@@ -309,6 +310,6 @@
         </table>
     </div>
 
-    {{-- <script src="{{ asset('js/jobList.js') }}"></script> --}}
+    <script src="{{ asset('js/works.js') }}" type="text/javascript"></script>
     {{-- @vite('/resources/js/registerPageOne.js') --}}
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recruitment;
+use App\Models\Work;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -17,9 +18,11 @@ class RecruitmentController extends Controller
 
     public function show($id)
     {
+        $works = Work::all();
+        // dd($works);
         // $recruitment = DB::table('recruitments')->find($id);
         $recruitment = Recruitment::find($id);
-        return view('recruitment.show', compact('recruitment'));
+        return view('recruitment.show', compact('recruitment', 'works'));
     }
 
     public function create()
@@ -94,7 +97,7 @@ class RecruitmentController extends Controller
             'grade' => $request->grade, // مقطع تحصیلی
             'state' => $request->state, // استان
             'city' => $request->city, // شهر
-            'capacity' => Array($request->capacity) // ظرفیت
+            'capacity' => Array((int)$request->capacity,0,0) // ظرفیت
         ]);
         $recruitment->save();
         return back();

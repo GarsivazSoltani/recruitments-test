@@ -20,7 +20,6 @@ const title1 = document.getElementById('title1');
 const title2 = document.getElementById('title2');
 const title3 = document.getElementById('title3');
 
-
 let user = localStorage.getItem('user');
 user = JSON.parse(user);
 
