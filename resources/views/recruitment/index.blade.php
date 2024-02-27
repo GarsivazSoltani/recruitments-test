@@ -28,6 +28,8 @@
         </ol>
     </div>
 
+    <div class="d-flex justify-content-center mt-3">{{$recruitments->links()}}</div>
+
     {{-- <script src="{{ asset('js/registerPageOne.js') }}"></script> --}}
     {{-- @vite('/resources/js/registerPageOne.js') --}}
 @endsection

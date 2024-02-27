@@ -11,7 +11,7 @@ class RecruitmentController extends Controller
     public function index()
     {
         // $recruitments = DB::table('recruitments')->get();
-        $recruitments = Recruitment::all();
+        $recruitments = Recruitment::paginate(3);
         return view('recruitment.index', compact('recruitments'));
     }
 
