@@ -34,7 +34,7 @@
 
     
     <div class="row g-5">
-        <h4 class="mb-1">مشخصات شغل</h4>
+        <h4 class="mb-1">درج مشخصات شغل</h4>
         <form class="needs-validation" id="addJob" method="POST" action="{{ route('recruitment.index') }}/{{$recruitment->id}}/conditions">
             @csrf
             <script type="text/javascript">
@@ -55,73 +55,17 @@
                     </div>
                 </div>
 
-                <div class="col-sm-4">
-                    <label for="field" class="form-label">رشته تحصیلی</label>
+                <div class="col-sm-5">
+                    <label for="field" class="form-label">رشته تحصیلی و گرایش</label>
                     <select class="form-select" id="field" name="field" value="">
-                        <option value="فناوری اطلاعات">فناوری اطلاعات</option>
-                        <option>صنایع خودرو</option>
-                        <option>صنایع چوب</option>
-                        <option>صنایع کاغذ</option>
-                        <option>فناوری اطلاعات</option>
-                        <option>الکترونیک</option>
-                        <option>جوشکاری و بازرسی جوش</option>
-                        <option>حمل ونقل زمینی</option>
-                        <option>حمل ونقل دریایی</option>
-                        <option>حمل و نقل ریلی</option>
-                        <option>تاسیسات</option>
-                        <option>صنایع دریایی</option>
-                        <option>صنایع رنگ</option>
-                        <option>صنایع شیمیایی</option>
-                        <option>پلیمر</option>
-                        <option>پتروشیمی</option>
-                        <option>صنایع چرم وپوست و خز</option>
-                        <option>صنایع نساجی</option>
-                        <option>متالورژی</option>
-                        <option>فناوری ارتباطات</option>
-                        <option>مدیریت صنایع</option>
-                        <option>سرامیک</option>
-                        <option>مکانیک</option>
-                        <option>کنترل وابزار دقیق</option>
-                        <option>برق</option>
-                        <option>صنایع فلزی</option>
-                        <option>ساختمان</option>
-                        <option>معماری</option>
-                        <option>صنعت چاپ</option>
-                        <option>معدن</option>
-                        <option>امور اداری</option>
-                        <option>امور مالی و بازرگانی</option>
-                        <option>بهداشت و ایمنی</option>
-                        <option>مراقبت و زیبایی</option>
-                        <option>خدمات آموزشی</option>
-                        <option>صنایع پوشاک</option>
-                        <option>گردشگری</option>
-                        <option>هتلداری</option>
-                        <option>امور شیلات و آبزی پروری</option>
-                        <option>امور دام و ماکیان</option>
-                        <option>امور باغی</option>
+                        {{-- <option value="فناوری اطلاعات">فناوری اطلاعات</option> --}}
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid field.
                     </div>
                 </div>
 
-                <div class="col-md-4">
-                    <label for="orientation" class="form-label">گرایش</label>
-                    <select class="form-select" id="orientation" name="orientation" value="">
-                        <option value="">انتخاب کنید...</option>
-                        <option>گرایش مهندسی نرم ‌افزار</option>
-                        <option>گرایش رایانش امن</option>
-                        <option>گرایش شبکه های کامپیوتری</option>
-                        <option>گرایش هوش مصنوعی</option>
-                        <option>گرایش معماری سیستم های کامپیوتر</option>
-                        <option>گرایش الگوریتم‌ها و محاسبات</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a valid orientation.
-                    </div>
-                </div>
-
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
                     <select class="form-select" id="grade" name="grade" value="">
                         <option value="">انتخاب کنید...</option>
@@ -137,23 +81,28 @@
                     </div>
                 </div>
 
+                <div class="mb-3">
+                    <label class="form-label">تعریف: </label>
+                    <label class="form-label text-primary" id="title"></label>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">نمونه وظایف ومسئولیت‌ها: </label>
+                    {{-- <label class="form-label text-primary" id="task"></label> --}}
+                    <ul id="task"></ul>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">نوع شغل: </label>
+                    <label class="form-label text-primary" id="type"></label>
+                </div>
+
                 <hr class="my-4">
 
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="SwitchZarfiyat" checked>
                     <label class="form-check-label" for="SwitchZarfiyat">ظرفیت بر اساس استان</label>
                 </div>
-
-                <!-- <div class="col-md-4">
-                    <label for="zarfiyat" class="form-label">ظرفیت بر اساس</label>
-                    <select class="form-select" id="zarfiyat" name="zarfiyat" value="">
-                        <option>استان</option>
-                        <option>شهرستان</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please provide a valid zarfiyat.
-                    </div>
-                </div> -->
 
                 <div class="col-md-4" id="zarfiyat1">
                     <label for="state" class="form-label">استان</label>
