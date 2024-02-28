@@ -89,15 +89,23 @@ class RecruitmentController extends Controller
     public function storeConditions(Request $request, $recruitmentId)
     {
         $recruitment = Recruitment::find($recruitmentId);
-        // dd($request);
+        $capacityTotal = 0;
+        // dd((int)$request->capacityAll);
+        if (!(int)$request->capacityAll) {
+            $capacityTotal = (int)$request->capacityWoman + (int)$request->capacityMan;
+            // dd('nist');
+        }else{
+            $capacityTotal = (int)$request->capacityAll;
+            // dd('hast');
+        }
         $recruitment->conditions()->create([
             'job_title' => $request->careerField, // عنوان شغلی
             'field_of_study' => $request->field, // رشته تحصیلی
-            'orientation' => $request->orientation, // گرایش
+            // 'orientation' => $request->orientation, // گرایش
             'grade' => $request->grade, // مقطع تحصیلی
             'state' => $request->state, // استان
             'city' => $request->city, // شهر
-            'capacity' => Array((int)$request->capacity,0,0) // ظرفیت
+            'capacity' => Array($capacityTotal,(int)$request->capacityWoman,(int)$request->capacityMan) // ظرفیت
         ]);
         $recruitment->save();
         return back();

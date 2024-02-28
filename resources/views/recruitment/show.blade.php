@@ -39,7 +39,6 @@
             @csrf
             <script type="text/javascript">
                 let data = {!! $works->toJson() !!}
-                // console.log('Garsi:', data);
             </script>
             <div class="row g-3">
                 <div class="col-md-4">
@@ -47,11 +46,21 @@
                     <select class="form-select" id="careerField" name="careerField" value="">
                         {{-- <option value="">انتخاب کنید...</option> --}}
                         @foreach ($works as $work)
-                            <option value="{{$work->id}}">{{$work->title}}</option>
+                            <option value="{{$work->title}}">{{$work->title}}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid career field.
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
+                    <select class="form-select" id="grade" name="grade" value="">
+                        {{-- <option value="">انتخاب کنید...</option> --}}
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid grade.
                     </div>
                 </div>
 
@@ -65,46 +74,44 @@
                     </div>
                 </div>
 
-                <div class="col-md-3">
-                    <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
-                    <select class="form-select" id="grade" name="grade" value="">
-                        <option value="">انتخاب کنید...</option>
-                        <option>دکتری</option>
-                        <option>کارشناسی ارشد</option>
-                        <option>کارشناسی</option>
-                        <option>کاردانی</option>
-                        <option>دیپلم</option>
-                        <option>زیر دیپلم</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please select a valid grade.
-                    </div>
+                <div class="mb-3">
+                    <label class="form-label">نوع شغل: </label>
+                    <label class="form-label badge bg-info text-dark" id="type"></label>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">تعریف: </label>
-                    <label class="form-label text-primary" id="title"></label>
+                    <label class="form-label text-muted" id="title"></label>
                 </div>
 
                 <div class="mb-3">
                     <label class="form-label">نمونه وظایف ومسئولیت‌ها: </label>
-                    {{-- <label class="form-label text-primary" id="task"></label> --}}
                     <ul id="task"></ul>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">نوع شغل: </label>
-                    <label class="form-label text-primary" id="type"></label>
+                    <label class="form-label">مهارت‌ها: </label>
+                    <ul id="skill"></ul>
                 </div>
+
+                <div class="mb-3">
+                    <label class="form-label">دوره‌های آموزشی: </label>
+                    <ul id="cours"></ul>
+                </div>
+
+                {{-- <div class="mb-3">
+                    <label class="form-label">ویژگی‌ها شخصیتی و رفتاری </label>
+                    <ul id="personality"></ul>
+                </div> --}}
 
                 <hr class="my-4">
 
                 <div class="form-check form-switch">
-                    <input class="form-check-input" type="checkbox" id="SwitchZarfiyat" checked>
-                    <label class="form-check-label" for="SwitchZarfiyat">ظرفیت بر اساس استان</label>
+                    <input class="form-check-input" type="checkbox" id="SwitchCapacity" checked>
+                    <label class="form-check-label" for="SwitchCapacity">ظرفیت بر اساس استان</label>
                 </div>
 
-                <div class="col-md-4" id="zarfiyat1">
+                <div class="col-md-4" id="capacity1">
                     <label for="state" class="form-label">استان</label>
                     <select class="form-select" id="state" name="state" value="">
                         <option>آذربایجان شرقی</option>
@@ -144,7 +151,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4" id="zarfiyat2">
+                <div class="col-md-4" id="capacity2">
                     <label for="city" class="form-label">شهر</label>
                     <select class="form-select" id="city" name="city" value="">
                         <option value="">انتخاب کنید...</option>
@@ -192,15 +199,15 @@
                     </div>
                 </div> -->
 
-                <div class="col-md-4" id="val1">
-                    <label for="capacity" class="form-label">ظرفیت</label>
-                    <input type="number" class="form-control" id="capacity" name="capacity" placeholder="" min="1" max="10000" value="">
+                <div class="col-md-4" id="sexAll">
+                    <label for="capacityAll" class="form-label">ظرفیت</label>
+                    <input type="number" class="form-control" id="capacityAll" name="capacityAll" placeholder="" min="1" max="10000" value="">
                     <div class="invalid-feedback">
                         Security code required
                     </div>
                 </div>
 
-                <div class="col-md-4 d-none" id="val2">
+                <div class="col-md-4 d-none" id="sexWoman">
                     <label for="capacityWoman" class="form-label">ظرفیت زن</label>
                     <input type="number" class="form-control" id="capacityWoman" name="capacityWoman" placeholder="" min="1" max="10000" value="">
                     <div class="invalid-feedback">
@@ -208,7 +215,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4 d-none" id="val3">
+                <div class="col-md-4 d-none" id="sexMan">
                     <label for="capacityMan" class="form-label">ظرفیت مرد</label>
                     <input type="number" class="form-control" id="capacityMan" name="capacityMan" placeholder="" min="1" max="10000" value="">
                     <div class="invalid-feedback">
@@ -244,11 +251,11 @@
                     <tr>
                         <th scope="row">{{$loop->iteration}}</th>
                         <td>{{$condition->job_title}}</td>
-                        <td>{{$condition->grade}}</td>
                         <td>{{$condition->state}}</td>
+                        <td>{{$condition->city}}</td>
                         <td>{{$condition->capacity[0]}}</td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$condition->capacity[1]}}</td>
+                        <td>{{$condition->capacity[2]}}</td>
                         {{-- {{$loop->count}} --}}
                     </tr>
                     {{-- <li> | {{$condition->field_of_study}} | {{$condition->orientation}}
