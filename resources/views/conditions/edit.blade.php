@@ -9,19 +9,21 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label class="form-label">@lang('public.recruitments name'): </label>
-                    <label class="form-label text-primary fw-bold">{{$recruitment->title}}</label>
+                    {{-- <label class="form-label text-primary fw-bold">{{$recruitment->title}}</label> --}}
+                    <label class="form-label text-primary fw-bold"></label>
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label">ظرفیت آزمون: </label>
-                    <label class="form-label text-primary fw-bold">{{$recruitment->total}} نفر</label>
+                    {{-- <label class="form-label text-primary fw-bold">{{$recruitment->total}} نفر</label> --}}
+                    <label class="form-label text-primary fw-bold"></label>
                 </div>
 
                 <div class="mb-3">
                     <div class="mb-3">
                     <label class="form-label">شرایط آزمون: </label>
-                    <label class="form-label text-primary fw-bold">{{$recruitment->eligibility}}</label>
-                    {{-- <textarea class="form-control" id="testConditions" name="testConditions" rows="4">{{$recruitment->eligibility}}</textarea> --}}
+                    {{-- <label class="form-label text-primary fw-bold">{{$recruitment->eligibility}}</label> --}}
+                    <label class="form-label text-primary fw-bold"></label>
                     </div>
                 </div>
             </div>
@@ -33,7 +35,7 @@
 
     <div class="row p-4 pb-0 align-items-center rounded-3 border mt-5 mb-3">
         <h5 class="fw-bold">درج مشخصات شغل</h5>
-        <form class="needs-validation" id="addJob" method="POST" action="{{ route('recruitment.index') }}/{{$recruitment->id}}/conditions">
+        <form class="needs-validation" id="addJob" method="POST" action="{{ route('condition.edit', $condition->id) }}">
             @csrf
             <script type="text/javascript">
                 let data = {!! $works->toJson() !!}
@@ -42,9 +44,8 @@
                 <div class="col-md-4">
                     <label for="careerField" class="form-label">عنوان شغلی</label>
                     <select class="form-select" id="careerField" name="careerField" value="">
-                        {{-- <option value="">انتخاب کنید...</option> --}}
                         @foreach ($works as $work)
-                            <option value="{{$work->title}}">{{$work->title}}</option>
+                            <option value="{{$work->title}}" @if ($condition->job_title == $work->title) selected @endif>{{$work->title}}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -112,6 +113,9 @@
                 <div class="col-md-4" id="capacity1">
                     <label for="state" class="form-label">استان</label>
                     <select class="form-select" id="state" name="state" value="">
+                        {{-- @foreach ($provinces as $province)
+                            <option value="{{$province->name}}" @if ($condition->state == $work->name) selected @endif>{{$province->name}}</option>
+                        @endforeach --}}
                         @foreach ($provinces as $province)
                             <option value="{{$province->id}}">{{$province->name}}</option>
                         @endforeach
@@ -197,44 +201,6 @@
             <button class="btn btn-primary btn-lg mt-5" type="submit">ثبت شغل</button>
             <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-lg mt-5">بازگشت</a>
         </form>
-    </div>
-
-    <div class="row g-5 mt-5" id="jobItems">
-        <table class="table table-striped table-sm">
-            <thead>
-              <tr>
-                <th scope="col">ردیف</th>
-                <th scope="col">عنوان شغلی</th>
-                <th scope="col">استان</th>
-                <th scope="col">شهرستان</th>
-                <th scope="col">ظرفیت</th>
-                <th scope="col">تنظیمات</th>
-                {{-- <th scope="col">ظرفیت زن</th>
-                <th scope="col">ظرفیت مرد</th> --}}
-              </tr>
-            </thead>
-            <tbody id="rowTableJob">
-                @foreach ($recruitment->conditions as $condition)
-                    <tr>
-                        <th scope="row">{{$loop->iteration}}</th>
-                        <td>{{$condition->job_title}}</td>
-                        <td>{{$condition->state}}</td>
-                        <td>{{$condition->city}}</td>
-                        <td>{{$condition->capacity[0]}}</td>
-                        <td>
-                            <a href="{{ route('condition.edit', $condition->id) }}" class="btn btn-warning btn-sm">ویرایش</a>
-                            <a href="{{ route('recruitment.index') }}" class="btn btn-danger btn-sm">حذف</a>
-                        </td>
-                        {{-- <td>{{$condition->capacity[1]}}</td> --}}
-                        {{-- <td>{{$condition->capacity[2]}}</td> --}}
-                        {{-- {{$loop->count}} --}}
-                    </tr>
-                    {{-- <li> | {{$condition->field_of_study}} | {{$condition->orientation}}
-                        |  |  | {{$condition->city}} | 
-                    </li> --}}
-                @endforeach
-            </tbody>
-        </table>
     </div>
 
     <script src="{{ asset('js/works.js') }}" type="text/javascript"></script>

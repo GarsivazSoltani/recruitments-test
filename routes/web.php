@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RecruitmentController;
@@ -38,4 +39,9 @@ Route::prefix('recruitment')->group(function (){
 
     // delete
     Route::delete('{id}', [RecruitmentController::class, 'destroy']);
+});
+
+Route::prefix('condition')->group(function (){
+    Route::get('{id}/edit', [ConditionController::class, 'edit'])->name('condition.edit');
+    // Route::put('{id}', [ConditionController::class, 'update'])->name('condition.update');
 });

@@ -1,4 +1,3 @@
-console.log('لیست شغل‌ها');
 console.log(data);
 
 const careerField = document.getElementById('careerField');

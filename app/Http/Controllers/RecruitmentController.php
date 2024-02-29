@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Province;
 use App\Models\Recruitment;
 use App\Models\Work;
 use Illuminate\Http\Request;
@@ -19,10 +20,11 @@ class RecruitmentController extends Controller
     public function show($id)
     {
         $works = Work::all();
+        $provinces = Province::all();
         // dd($works);
         // $recruitment = DB::table('recruitments')->find($id);
         $recruitment = Recruitment::find($id);
-        return view('recruitment.show', compact('recruitment', 'works'));
+        return view('recruitment.show', compact('recruitment', 'works', 'provinces'));
     }
 
     public function create()
