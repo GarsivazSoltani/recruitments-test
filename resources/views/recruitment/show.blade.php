@@ -3,10 +3,10 @@
 @section('title', __('public.tvto'))
 
 @section('content')
-    <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
-        <div class="col-lg-12 p-3 p-lg-5 pt-lg-3">
-            <h1 class="display-6 fw-bold lh-1 text-body-emphasis mb-5">مشخصات آزمون استخدام</h1>
-            <div class="row g-3">
+    <div class="row p-4 pb-0 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
+        {{-- <div class="col-lg-12 p-3 p-lg-5 pt-lg-3"> --}}
+            <h4 class="fw-bold lh-1 text-body-emphasis">آگهی آزمون استخدام</h4>
+            <div class="row">
                 <div class="col-sm-6">
                     <label class="form-label">@lang('public.recruitments name'): </label>
                     <label class="form-label text-primary fw-bold">{{$recruitment->title}}</label>
@@ -14,7 +14,7 @@
 
                 <div class="col-md-6">
                     <label class="form-label">ظرفیت آزمون: </label>
-                    <label class="form-label text-primary fw-bold">{{$recruitment->total}}</label>
+                    <label class="form-label text-primary fw-bold">{{$recruitment->total}} نفر</label>
                 </div>
 
                 <div class="mb-3">
@@ -25,16 +25,14 @@
                     </div>
                 </div>
             </div>
-            <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-lg mt-3">بازگشت</a>
-        </div>
+            {{-- <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-lg mt-3">بازگشت</a> --}}
+        {{-- </div> --}}
     </div>
 
+    {{-- <div class="row g-5"> --}}
 
-
-
-    
-    <div class="row g-5">
-        <h4 class="mb-1">درج مشخصات شغل</h4>
+    <div class="row p-4 pb-0 align-items-center rounded-3 border mt-5 mb-3">
+        <h5 class="fw-bold">درج مشخصات شغل</h5>
         <form class="needs-validation" id="addJob" method="POST" action="{{ route('recruitment.index') }}/{{$recruitment->id}}/conditions">
             @csrf
             <script type="text/javascript">
@@ -224,26 +222,23 @@
                 </div>
             </div>
 
-            <hr class="my-4">
-
             <button class="btn btn-primary btn-lg mt-5" type="submit">ثبت شغل</button>
+            <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-lg mt-5">بازگشت</a>
         </form>
     </div>
 
-
-    <hr>
-
     <div class="row g-5 mt-5" id="jobItems">
-        <table class="table table-striped">
+        <table class="table table-striped table-sm">
             <thead>
               <tr>
                 <th scope="col">ردیف</th>
                 <th scope="col">عنوان شغلی</th>
                 <th scope="col">استان</th>
                 <th scope="col">شهرستان</th>
-                <th scope="col">ظرفیت کلی</th>
-                <th scope="col">ظرفیت زن</th>
-                <th scope="col">ظرفیت مرد</th>
+                <th scope="col">ظرفیت</th>
+                <th scope="col">تنظیمات</th>
+                {{-- <th scope="col">ظرفیت زن</th>
+                <th scope="col">ظرفیت مرد</th> --}}
               </tr>
             </thead>
             <tbody id="rowTableJob">
@@ -254,8 +249,12 @@
                         <td>{{$condition->state}}</td>
                         <td>{{$condition->city}}</td>
                         <td>{{$condition->capacity[0]}}</td>
-                        <td>{{$condition->capacity[1]}}</td>
-                        <td>{{$condition->capacity[2]}}</td>
+                        <td>
+                            <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-sm">ویرایش</a>
+                            <a href="{{ route('recruitment.index') }}" class="btn btn-danger btn-sm">حذف</a>
+                        </td>
+                        {{-- <td>{{$condition->capacity[1]}}</td> --}}
+                        {{-- <td>{{$condition->capacity[2]}}</td> --}}
                         {{-- {{$loop->count}} --}}
                     </tr>
                     {{-- <li> | {{$condition->field_of_study}} | {{$condition->orientation}}
