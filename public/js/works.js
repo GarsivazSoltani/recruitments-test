@@ -1,4 +1,6 @@
+console.log('لیست شغل‌ها');
 console.log(data);
+console.log(cities);
 
 const careerField = document.getElementById('careerField');
 careerField.addEventListener('change', function(e){
@@ -81,6 +83,25 @@ generateField();
 
 
 
+// اتصال استان و شهر
+const state = document.getElementById('state');
+const city = document.getElementById('city');
+state.addEventListener('change', function(e){
+    // console.log('id:', e.target.value, '|', state.selectedIndex+1);
+    id = Number(e.target.value);
+    city.innerHTML = '';
+    cities.forEach(item => {
+        if (item.provinces_id == id) {
+            let option = document.createElement('option');
+            option.value = item.id;
+            option.text = item.name;
+            city.append(option);
+        }
+    });
+});
+
+
+
 // const state = document.getElementById('state');
 // const zarfiyat = document.getElementById('zarfiyat');
 // const zarfiyat1 = document.getElementById('zarfiyat1');
@@ -127,6 +148,7 @@ function clearCapacity() {
 
 
 // محاسبات ظرفیت
+/*
 const btnJob = document.getElementById('addJob');
 btnJob.addEventListener("submit", function (e) {
     // e.preventDefault();
@@ -141,3 +163,4 @@ btnJob.addEventListener("submit", function (e) {
         // e.stopPropagation()
     }
 });
+*/

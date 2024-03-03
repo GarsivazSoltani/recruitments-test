@@ -34,18 +34,20 @@
     {{-- <div class="row g-5"> --}}
 
     <div class="row p-4 pb-0 align-items-center rounded-3 border mt-5 mb-3">
-        <h5 class="fw-bold">درج مشخصات شغل</h5>
+        <h5 class="fw-bold">ویرایش مشخصات شغل</h5>
         <form class="needs-validation" id="addJob" method="POST" action="{{ route('condition.edit', $condition->id) }}">
             @csrf
             <script type="text/javascript">
-                let data = {!! $works->toJson() !!}
+                let works = {!! $works->toJson() !!};
+                let cities = {!! $cities->toJson() !!};
+                let condition = {!! $condition->toJson() !!};
             </script>
             <div class="row g-3">
                 <div class="col-md-4">
                     <label for="careerField" class="form-label">عنوان شغلی</label>
                     <select class="form-select" id="careerField" name="careerField" value="">
                         @foreach ($works as $work)
-                            <option value="{{$work->title}}" @if ($condition->job_title == $work->title) selected @endif>{{$work->title}}</option>
+                            <option value="{{$work->id}}" @if ($work->title == $condition->job_title) selected @endif>{{$work->title}}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -56,7 +58,9 @@
                 <div class="col-md-3">
                     <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
                     <select class="form-select" id="grade" name="grade" value="">
-                        {{-- <option value="">انتخاب کنید...</option> --}}
+                        {{-- @foreach ($works as $work)
+                            <option value="{{$work->education}}" @if ($work->title == $condition->job_title) selected @endif>{{$work->title}}</option>
+                        @endforeach --}}
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid grade.
@@ -113,11 +117,8 @@
                 <div class="col-md-4" id="capacity1">
                     <label for="state" class="form-label">استان</label>
                     <select class="form-select" id="state" name="state" value="">
-                        {{-- @foreach ($provinces as $province)
-                            <option value="{{$province->name}}" @if ($condition->state == $work->name) selected @endif>{{$province->name}}</option>
-                        @endforeach --}}
                         @foreach ($provinces as $province)
-                            <option value="{{$province->id}}">{{$province->name}}</option>
+                            <option value="{{$province->id}}" @if ($province->name == $condition->state) selected @endif>{{$province->name}}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -128,27 +129,10 @@
                 <div class="col-md-4" id="capacity2">
                     <label for="city" class="form-label">شهر</label>
                     <select class="form-select" id="city" name="city" value="">
-                        <option value="">انتخاب کنید...</option>
-                        <option>اسلامشهر</option>
-                        <option>پاکدشت</option>
-                        <option>پردیس</option>
-                        <option>تهران</option>
-                        <option>دماوند</option>
-                        <option>رباط کریم</option>
-                        <option>ری</option>
-                        <option>شمیرانات</option>
-                        <option>شهریار</option>
-                        <option>فیروزکوه</option>
-                        <option>شهر قدس</option>
-                        <option>ملارد</option>
-                        <option>پیشوا</option>
-                        <option>ورامین</option>
-                        <option>قرچك</option>
-                        <option>بهارستان</option>
-                        <option>پرند</option>
-                        <option>نسیم</option>
-                        <option>قرچک</option>
-                        <option>اندیشه</option>
+                        @foreach ($cities as $city)
+                            <option value="{{$city->id}}">{{$city->name}}</option>
+                            <option value="{{$city->id}}" @if ($city->name == $condition->city) selected @endif>{{$city->name}}</option>
+                        @endforeach
                     </select>
                     <div class="invalid-feedback">
                         Please provide a valid state.
@@ -198,11 +182,13 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary btn-lg mt-5" type="submit">ثبت شغل</button>
+            <button class="btn btn-primary btn-lg mt-5" type="submit">ویرایش شغل</button>
             <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-lg mt-5">بازگشت</a>
         </form>
     </div>
 
-    <script src="{{ asset('js/works.js') }}" type="text/javascript"></script>
+    {{-- <script src="{{ asset('js/works.js') }}" type="text/javascript"></script> --}}
+    {{-- <script src="{{ asset('js/fillElements.js') }}" type="text/javascript"></script> --}}
+    <script src="{{ asset('js/actionEdit.js') }}" type="module"></script>
     {{-- @vite('/resources/js/registerPageOne.js') --}}
 @endsection

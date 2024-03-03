@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Conditions;
 use App\Models\Province;
 use App\Models\Work;
@@ -13,8 +14,12 @@ class ConditionController extends Controller
     {
         $works = Work::all();
         $provinces = Province::all();
+        $cities = City::all();
+
         $condition = Conditions::find($id);
-        return view('conditions.edit', compact('condition', 'works', 'provinces'));
+        // $provinces = Province::find($condition->id);
+
+        return view('conditions.edit', compact('condition', 'works', 'provinces', 'cities'));
     }
 
     public function destroy($id)

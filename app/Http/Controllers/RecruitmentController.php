@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\Province;
 use App\Models\Recruitment;
 use App\Models\Work;
@@ -21,10 +22,10 @@ class RecruitmentController extends Controller
     {
         $works = Work::all();
         $provinces = Province::all();
-        // dd($works);
+        $cities = City::all();
         // $recruitment = DB::table('recruitments')->find($id);
         $recruitment = Recruitment::find($id);
-        return view('recruitment.show', compact('recruitment', 'works', 'provinces'));
+        return view('recruitment.show', compact('recruitment', 'works', 'provinces', 'cities'));
     }
 
     public function create()
@@ -100,16 +101,24 @@ class RecruitmentController extends Controller
             $capacityTotal = (int)$request->capacityAll;
             // dd('hast');
         }
+
+
+        $work = Work::find($request->careerField);
+        $stateName = Province::find($request->state);
+        $cityName = City::find($request->city);
+
         $recruitment->conditions()->create([
-            'job_title' => $request->careerField, // عنوان شغلی
+            'job_title' => $work->title, // عنوان شغلی
             'field_of_study' => $request->field, // رشته تحصیلی
             // 'orientation' => $request->orientation, // گرایش
             'grade' => $request->grade, // مقطع تحصیلی
-            'state' => $request->state, // استان
-            'city' => $request->city, // شهر
-            'capacity' => Array($capacityTotal,(int)$request->capacityWoman,(int)$request->capacityMan) // ظرفیت
+            'state' => $stateName->name, // استان
+            'city' => $cityName->name, // شهر
+            'capacity' => Array($capacityTotal,(int)$request->capacityWoman,(int)$request->capacityMan), // ظرفیت
+            'work_id' => $work->id
         ]);
         $recruitment->save();
+
         return back();
     }
 }

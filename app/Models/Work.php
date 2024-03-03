@@ -17,4 +17,8 @@ class Work extends Model
     //     'personality' => 'array',
     //     'type' => 'array',
     // ];
+    public function conditions()
+    {
+        return $this->hasMany(Conditions::class);
+    }
 }

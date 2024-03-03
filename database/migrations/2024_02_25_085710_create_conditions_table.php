@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('conditions', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->string('job_title'); // عنوان شغلی
             $table->string('field_of_study'); // رشته تحصیلی
             $table->string('orientation'); // گرایش
@@ -20,8 +20,10 @@ return new class extends Migration
             $table->string('state'); // استان
             $table->string('city')->nullable(); // شهر
             $table->string('capacity'); // ظرفیت
-            $table->integer('recruitment_id')->unsigned();
+            $table->bigInteger('recruitment_id')->unsigned();
             $table->foreign('recruitment_id')->references('id')->on('recruitments')->onDelete('cascade');
+            $table->bigInteger('work_id')->unsigned();
+            $table->foreign('work_id')->references('id')->on('works')->onDelete('cascade');
             $table->timestamps();
         });
     }

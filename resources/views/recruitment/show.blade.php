@@ -36,7 +36,9 @@
         <form class="needs-validation" id="addJob" method="POST" action="{{ route('recruitment.index') }}/{{$recruitment->id}}/conditions">
             @csrf
             <script type="text/javascript">
-                let data = {!! $works->toJson() !!}
+                let works = {!! $works->toJson() !!};
+                let cities = {!! $cities->toJson() !!};
+                let condition = {!! $recruitment->conditions->toJson() !!};
             </script>
             <div class="row g-3">
                 <div class="col-md-4">
@@ -44,7 +46,7 @@
                     <select class="form-select" id="careerField" name="careerField" value="">
                         {{-- <option value="">انتخاب کنید...</option> --}}
                         @foreach ($works as $work)
-                            <option value="{{$work->title}}">{{$work->title}}</option>
+                            <option value="{{$work->id}}">{{$work->title}}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -124,27 +126,7 @@
                 <div class="col-md-4" id="capacity2">
                     <label for="city" class="form-label">شهر</label>
                     <select class="form-select" id="city" name="city" value="">
-                        <option value="">انتخاب کنید...</option>
-                        <option>اسلامشهر</option>
-                        <option>پاکدشت</option>
-                        <option>پردیس</option>
-                        <option>تهران</option>
-                        <option>دماوند</option>
-                        <option>رباط کریم</option>
-                        <option>ری</option>
-                        <option>شمیرانات</option>
-                        <option>شهریار</option>
-                        <option>فیروزکوه</option>
-                        <option>شهر قدس</option>
-                        <option>ملارد</option>
-                        <option>پیشوا</option>
-                        <option>ورامین</option>
-                        <option>قرچك</option>
-                        <option>بهارستان</option>
-                        <option>پرند</option>
-                        <option>نسیم</option>
-                        <option>قرچک</option>
-                        <option>اندیشه</option>
+                        {{-- <option value="">انتخاب کنید...</option> --}}
                     </select>
                     <div class="invalid-feedback">
                         Please provide a valid state.
@@ -214,29 +196,13 @@
               </tr>
             </thead>
             <tbody id="rowTableJob">
-                @foreach ($recruitment->conditions as $condition)
-                    <tr>
-                        <th scope="row">{{$loop->iteration}}</th>
-                        <td>{{$condition->job_title}}</td>
-                        <td>{{$condition->state}}</td>
-                        <td>{{$condition->city}}</td>
-                        <td>{{$condition->capacity[0]}}</td>
-                        <td>
-                            <a href="{{ route('condition.edit', $condition->id) }}" class="btn btn-warning btn-sm">ویرایش</a>
-                            <a href="{{ route('recruitment.index') }}" class="btn btn-danger btn-sm">حذف</a>
-                        </td>
-                        {{-- <td>{{$condition->capacity[1]}}</td> --}}
-                        {{-- <td>{{$condition->capacity[2]}}</td> --}}
-                        {{-- {{$loop->count}} --}}
-                    </tr>
-                    {{-- <li> | {{$condition->field_of_study}} | {{$condition->orientation}}
-                        |  |  | {{$condition->city}} | 
-                    </li> --}}
-                @endforeach
+
             </tbody>
         </table>
     </div>
 
-    <script src="{{ asset('js/works.js') }}" type="text/javascript"></script>
+    {{-- <script src="{{ asset('js/works.js') }}" type="text/javascript"></script> --}}
+    {{-- <script src="{{ asset('js/fillElements.js') }}" type="module"></script> --}}
+    <script src="{{ asset('js/actionShow.js') }}" type="module"></script>
     {{-- @vite('/resources/js/registerPageOne.js') --}}
 @endsection

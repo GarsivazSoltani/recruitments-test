@@ -12,4 +12,14 @@ class Conditions extends Model
     protected $casts = [
         'capacity' => 'array'
     ];
+    
+    // function recruitments()
+    // {
+    //     return $this->belongsTo(Recruitment::class);
+    // }
+
+    function work()
+    {
+        return $this->belongsTo(Work::class);
+    }
 }
