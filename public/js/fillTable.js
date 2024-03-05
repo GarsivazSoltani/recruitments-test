@@ -2,7 +2,7 @@ console.log('ساختن جدول');
 
 const addTableRow = document.getElementById('rowTableJob');
 export function generateTableRow(data){
-    console.log(data);
+    console.log('table:', data);
     data.forEach((item, index) => {
         let makeRow = document.createElement('tr'); // ساختن یک سطر
 
@@ -13,9 +13,16 @@ export function generateTableRow(data){
         generateTableColumn(makeRow, item.capacity[0], false); // ساختن ستون ظرفیت
 
         let column = document.createElement('th'); // ساختن ستون ظرفیت
+        let div = document.createElement('div'); // ساختن ستون ظرفیت
+
+        // div.classList.add('d-flex', 'align-items-center');
+        // column.append(div); // اضافه کردن ستون به سطر
+
         makeRow.append(column); // اضافه کردن ستون به سطر
         generateButton(column, item.id, 'ویرایش', 'btn-warning', 'edit'); // ساختن دکمه ویرایش
         generateButton(column, item.id, 'حذف', 'btn-danger', 'delete'); // ساختن دکمه حذف
+        // generateDeleteButton(column, item.id, 'حذف', 'btn-danger', 'delete'); // ساختن دکمه حذف
+
 
         addTableRow.append(makeRow); // اضافه کردن سطر به جدول
     });
@@ -31,10 +38,13 @@ function generateTableColumn(row, data, scope)
     row.append(column) // اضافه کردن ستون به سطر
 }
 
-function generateButton(column, id, name, color, btnAction){
+function generateButton(column, id, title, color, btnAction){
     let btn = document.createElement('a'); // ساختن دکمه
     btn.classList.add('btn', 'm-1', color);
-    btn.innerHTML = name;
+    btn.innerHTML = title;
+    // if (btnAction == 'edit') {
+    //     btn.href = `../condition/${id}/edit`;
+    // }
     if (btnAction == 'edit') {
         btn.href = `../condition/${id}/edit`;
     }else{
@@ -42,3 +52,37 @@ function generateButton(column, id, name, color, btnAction){
     }
     column.append(btn); // اضافه کردن دکمه به ستون
 }
+
+function generateDeleteButton(column, id, name, color, btnAction){
+    let myform = document.createElement("form");
+    myform.action = `../condition/${id}/delete`;
+    myform.method = "POST";
+    myform.classList.add('mt-3');
+
+    let method = document.createElement("input");
+    method.type = 'hidden';
+    method.name = '_method';
+    method.value = 'delete';
+    myform.appendChild(method);
+
+    let csrf = document.createElement("input");
+    csrf.type = 'hidden';
+    csrf.name = '_csrf';
+    csrf.value = '<your_csrf_token>';
+    myform.appendChild(csrf);
+
+    let btn = document.createElement("button");
+    btn.value = "delete";
+    btn.innerHTML = "حذف";
+    // btn.name = "name";
+    btn.classList.add('btn', 'btn-danger', 'btn-sm', 'm-1');
+    
+    myform.appendChild(btn);
+    myform.submit();
+
+
+    column.append(myform); // اضافه کردن دکمه به ستون
+}
+
+
+

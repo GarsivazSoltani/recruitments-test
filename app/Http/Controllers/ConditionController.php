@@ -11,17 +11,6 @@ use Illuminate\Http\Request;
 
 class ConditionController extends Controller
 {
-    public function show($id)
-    {
-        // $works = Work::all();
-        // $provinces = Province::all();
-        // $cities = City::all();
-        // $recruitment = Recruitment::find($id);
-        // return view('recruitment.show', compact('recruitment', 'works', 'provinces', 'cities'));
-
-        return $id;
-    }
-
     public function edit($id)
     {
         $works = Work::all();
@@ -53,17 +42,27 @@ class ConditionController extends Controller
         $condition->field_of_study = $request->field; // رشته تحصیلی
         // $condition->orientation = $request->orientation; // گرایش
         $condition->grade = $request->grade; // مقطع تحصیلی
-        $condition->state = $stateName->name; // استان
+        $condition->state = $stateName->name; // استانgit 
         $condition->city =  $cityName->name; // شهر
         $condition->capacity = Array($capacityTotal,(int)$request->capacityWoman,(int)$request->capacityMan); // ظرفیت
         $condition->save();
 
-        return redirect('recruitment');
+        return redirect('recruitment/' . $condition->recruitment_id);
+    }
+
+    public function delete($id)
+    {
+        $works = Work::all();
+        $provinces = Province::all();
+        $cities = City::all();
+        $condition = Conditions::find($id);
+        return view('conditions.delete', compact('condition', 'works', 'provinces', 'cities'));
     }
 
     public function destroy($id)
     {
-        // Recruitment::find($id)->delete();
+        dd('123');
+        // Conditions::find($id)->delete();
         // return back();
         return 'Delete: ' . $id;
     }

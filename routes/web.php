@@ -50,5 +50,6 @@ Route::prefix('condition')->group(function (){
     // Route::get('{id}', [ConditionController::class, 'show'])->name('condition.show');
     
     // delete
-    // Route::delete('{id}', [ConditionController::class, 'destroy'])->name('condition.delete');
+    // Route::get('{id}/delete', [ConditionController::class, 'delete'])->name('condition.delete');
+    Route::delete('{id}', [ConditionController::class, 'destroy']);
 });

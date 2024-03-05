@@ -3,24 +3,30 @@ console.log('فایل پر کردن آیتم‌ها');
 // console.log(cities); // جدول استان‌ها
 // console.log(condition); // جدول استان‌ها
 
+
 const field = document.getElementById('field');
 const grade = document.getElementById('grade');
 const type = document.getElementById('type');
 const task = document.getElementById('task');
 const skill = document.getElementById('skill');
 const cours = document.getElementById('cours');
-// const capacityAll = document.getElementById('capacityAll');
+const capacityAll = document.getElementById('capacityAll');
 
 export function generateField(id, datas){
+    console.log('grade', condition);
     datas.forEach(data => {
         if (id == data.id) {
-            fillComboBox(data.certificate, field); // پرکردن آیتم مدرک تحصیلی
-            fillComboBox(data.educations, grade); // پرکردن آیتم رشته تحصیلی و گرایش
+            fillComboBox(data.certificate, field, condition.field_of_study); // پرکردن آیتم مدرک تحصیلی
+            fillComboBox(data.educations, grade, condition.grade); // پرکردن آیتم رشته تحصیلی و گرایش
             type.innerHTML = data.type; // پر کردن آیتم نوع شغل
             title.innerHTML = data.definition; // پر کردن آیتم تعریف شغل
             fillComboBox(data.task, task, false); // پرکردن آیتم وظایف و مسئولیت‌ها
             fillComboBox(data.skill, skill, false); // پرکردن آیتم مهارت‌ها
             fillComboBox(data.cours, cours, false); // پرکردن آیتم دوره‌های آموزشی
+            console.log('gary:', condition.capacity);
+            // let str = JSON.parse(condition.capacity);
+            // console.log('Garsi:', str);
+            capacityAll.innerHTML = Number(5);
         }
     });
 }
@@ -32,6 +38,10 @@ function fillComboBox(arrayList, element, fill){
     items.forEach(item => {
         let option = document.createElement('option');
         option.text = item;
+        if (fill && fill == item) {
+            console.log('grade:', fill, '|', item);
+            option.selected = true;
+        }
         element.append(option);
     });
 }
@@ -44,6 +54,10 @@ export function generateCity(id, element){
             let option = document.createElement('option');
             option.value = item.id;
             option.text = item.name;
+            if (condition.city == item.name) {
+                // console.log(condition.city);
+                option.selected = true;
+            }
             element.append(option);
         }
     });

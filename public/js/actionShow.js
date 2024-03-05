@@ -4,17 +4,18 @@ import * as fillTable from "./fillTable.js";
 console.log('لیست شغل‌ها');
 // console.log(works); // جدول مشاغل
 // console.log(cities); // جدول استان‌ها
-// console.log(condition); // جدول استان‌ها
+// console.log(condition); // جدول مشاغل
+// console.log(recruitmentID); // شناسه آزمون
 
 const city = document.getElementById('city');
 
-generate.generateField(1, works);
+generate.generateField(1, works, null);
 generate.generateCity(1, city);
 fillTable.generateTableRow(condition);
 
 const careerField = document.getElementById('careerField');
 careerField.addEventListener('change', function(e){
-    generate.generateField(e.target.value, works);
+    generate.generateField(e.target.value, works, null);
 });
 
 
@@ -24,13 +25,3 @@ state.addEventListener('change', function(e){
     let id = Number(e.target.value);
     generate.generateCity(id, city);
 });
-
-// ساختن جدول مشاغل
-// const btnJob = document.getElementById('addJob');
-// btnJob.addEventListener("submit", function (e) {
-//     // e.preventDefault();
-//     // if (capacityAll.value > 0 || capacityWoman.value > 0 || capacityMan.value > 0){
-//     //     generateRow(e);
-//     // }
-//     // fillTable.generateTableRow(condition);
-// });

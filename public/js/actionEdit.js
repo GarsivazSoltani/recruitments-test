@@ -4,12 +4,11 @@ import * as fillTable from "./fillTable.js";
 console.log('لیست شغل‌ها');
 // console.log(works); // جدول مشاغل
 // console.log(cities); // جدول استان‌ها
-console.log(condition); // جدول استان‌ها
+// console.log(condition); // جدول استان‌ها
 
 const city = document.getElementById('city');
-
-generate.generateField(1, works);
-generate.generateCity(1, city);
+// condition.grade
+generate.generateField(condition.work_id, works);
 // fillTable.generateTableRow(condition);
 
 const careerField = document.getElementById('careerField');
@@ -20,6 +19,7 @@ careerField.addEventListener('change', function(e){
 
 // اتصال استان و شهر
 const state = document.getElementById('state');
+generate.generateCity(state.value, city);
 state.addEventListener('change', function(e){
     let id = Number(e.target.value);
     generate.generateCity(id, city);

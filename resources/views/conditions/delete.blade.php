@@ -4,50 +4,45 @@
 
 @section('content')
     <div class="row p-4 pb-0 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
-        {{-- <div class="col-lg-12 p-3 p-lg-5 pt-lg-3"> --}}
-            <h4 class="fw-bold lh-1 text-body-emphasis">آگهی آزمون استخدام</h4>
+            <h4 class="fw-bold lh-1 text-body-emphasis">ویرایش آگهی آزمون استخدام</h4>
             <div class="row">
                 <div class="col-sm-6">
                     <label class="form-label">@lang('public.recruitments name'): </label>
-                    <label class="form-label text-primary fw-bold">{{$recruitment->title}}</label>
+                    <label class="form-label text-primary fw-bold"></label>
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label">ظرفیت آزمون: </label>
-                    <label class="form-label text-primary fw-bold">{{$recruitment->total}} نفر</label>
+                    <label class="form-label text-primary fw-bold"></label>
                 </div>
 
                 <div class="mb-3">
                     <div class="mb-3">
                     <label class="form-label">شرایط آزمون: </label>
-                    <label class="form-label text-primary fw-bold">{{$recruitment->eligibility}}</label>
-                    {{-- <textarea class="form-control" id="testConditions" name="testConditions" rows="4">{{$recruitment->eligibility}}</textarea> --}}
+                    <label class="form-label text-primary fw-bold"></label>
                     </div>
                 </div>
             </div>
-            {{-- <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-lg mt-3">بازگشت</a> --}}
-        {{-- </div> --}}
     </div>
 
     {{-- <div class="row g-5"> --}}
 
     <div class="row p-4 pb-0 align-items-center rounded-3 border mt-5 mb-3">
-        <h5 class="fw-bold">درج مشخصات شغل</h5>
-        <form class="needs-validation" id="addJob" method="POST" action="{{ route('recruitment.index') }}/{{$recruitment->id}}/conditions">
+        <h5 class="fw-bold">ویرایش مشخصات شغل</h5>
+        <form class="needs-validation" id="addJob" method="POST" action="{{ route('condition.delete', $condition->id) }}">
+            @method('delete')
             @csrf
             <script type="text/javascript">
                 let works = {!! $works->toJson() !!};
                 let cities = {!! $cities->toJson() !!};
-                let recruitmentID = {!! $recruitment->id !!};
-                let condition = {!! $recruitment->conditions->toJson() !!};
+                let condition = {!! $condition->toJson() !!};
             </script>
             <div class="row g-3">
                 <div class="col-md-4">
                     <label for="careerField" class="form-label">عنوان شغلی</label>
                     <select class="form-select" id="careerField" name="careerField" value="">
-                        {{-- <option value="">انتخاب کنید...</option> --}}
                         @foreach ($works as $work)
-                            <option value="{{$work->id}}">{{$work->title}}</option>
+                            <option value="{{$work->id}}" @if ($work->title == $condition->job_title) selected @endif>{{$work->title}}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -58,7 +53,9 @@
                 <div class="col-md-3">
                     <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
                     <select class="form-select" id="grade" name="grade" value="">
-                        {{-- <option value="">انتخاب کنید...</option> --}}
+                        {{-- @foreach ($works as $work)
+                            <option value="{{$work->id}}" @if ($work->education == $condition->grade) selected @endif>{{$work->education}}</option>
+                        @endforeach --}}
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid grade.
@@ -116,7 +113,7 @@
                     <label for="state" class="form-label">استان</label>
                     <select class="form-select" id="state" name="state" value="">
                         @foreach ($provinces as $province)
-                            <option value="{{$province->id}}">{{$province->name}}</option>
+                            <option value="{{$province->id}}" @if ($province->name == $condition->state) selected @endif>{{$province->name}}</option>
                         @endforeach
                     </select>
                     <div class="invalid-feedback">
@@ -127,7 +124,9 @@
                 <div class="col-md-4" id="capacity2">
                     <label for="city" class="form-label">شهر</label>
                     <select class="form-select" id="city" name="city" value="">
-                        {{-- <option value="">انتخاب کنید...</option> --}}
+                        {{-- @foreach ($cities as $city)
+                            <option value="{{$city->id}}" @if ($city->name == $condition->city) selected @endif>{{$city->name}}</option>
+                        @endforeach --}}
                     </select>
                     <div class="invalid-feedback">
                         Please provide a valid state.
@@ -177,33 +176,13 @@
                 </div>
             </div>
 
-            <button class="btn btn-primary btn-lg mt-5" type="submit">ثبت شغل</button>
+            <button class="btn btn-danger btn-lg mt-5" type="submit">حذف شغل</button>
             <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-lg mt-5">بازگشت</a>
         </form>
     </div>
 
-    <div class="row g-5 mt-5" id="jobItems">
-        <table class="table table-striped table-sm">
-            <thead>
-            <tr>
-                <th scope="col">ردیف</th>
-                <th scope="col">عنوان شغلی</th>
-                <th scope="col">استان</th>
-                <th scope="col">شهرستان</th>
-                <th scope="col">ظرفیت</th>
-                <th scope="col">تنظیمات</th>
-                {{-- <th scope="col">ظرفیت زن</th>
-                <th scope="col">ظرفیت مرد</th> --}}
-            </tr>
-            </thead>
-            <tbody id="rowTableJob">
-
-            </tbody>
-        </table>
-    </div>
-
     {{-- <script src="{{ asset('js/works.js') }}" type="text/javascript"></script> --}}
-    {{-- <script src="{{ asset('js/fillElements.js') }}" type="module"></script> --}}
-    <script src="{{ asset('js/actionShow.js') }}" type="module"></script>
+    {{-- <script src="{{ asset('js/fillElements.js') }}" type="text/javascript"></script> --}}
+    <script src="{{ asset('js/actionEdit.js') }}" type="module"></script>
     {{-- @vite('/resources/js/registerPageOne.js') --}}
 @endsection
