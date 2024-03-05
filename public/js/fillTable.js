@@ -14,8 +14,8 @@ export function generateTableRow(data){
 
         let column = document.createElement('th'); // ساختن ستون ظرفیت
         makeRow.append(column); // اضافه کردن ستون به سطر
-        generateButton(column, item.id, 'ویرایش', 'btn-warning'); // ساختن دکمه ویرایش
-        generateButton(column, item.id, 'حذف', 'btn-danger'); // ساختن دکمه حذف
+        generateButton(column, item.id, 'ویرایش', 'btn-warning', 'edit'); // ساختن دکمه ویرایش
+        generateButton(column, item.id, 'حذف', 'btn-danger', 'delete'); // ساختن دکمه حذف
 
         addTableRow.append(makeRow); // اضافه کردن سطر به جدول
     });
@@ -31,10 +31,14 @@ function generateTableColumn(row, data, scope)
     row.append(column) // اضافه کردن ستون به سطر
 }
 
-function generateButton(column, id, name, color){
+function generateButton(column, id, name, color, btnAction){
     let btn = document.createElement('a'); // ساختن دکمه
     btn.classList.add('btn', 'm-1', color);
     btn.innerHTML = name;
-    btn.href = `../condition/${id}/edit`;
+    if (btnAction == 'edit') {
+        btn.href = `../condition/${id}/edit`;
+    }else{
+        btn.href = `../condition/${id}`;
+    }
     column.append(btn); // اضافه کردن دکمه به ستون
 }

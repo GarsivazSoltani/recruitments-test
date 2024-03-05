@@ -42,6 +42,13 @@ Route::prefix('recruitment')->group(function (){
 });
 
 Route::prefix('condition')->group(function (){
+    // edit
     Route::get('{id}/edit', [ConditionController::class, 'edit'])->name('condition.edit');
-    // Route::put('{id}', [ConditionController::class, 'update'])->name('condition.update');
+    Route::put('{id}', [ConditionController::class, 'update'])->name('condition.update');
+    
+    // show
+    // Route::get('{id}', [ConditionController::class, 'show'])->name('condition.show');
+    
+    // delete
+    // Route::delete('{id}', [ConditionController::class, 'destroy'])->name('condition.delete');
 });

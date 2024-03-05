@@ -4,38 +4,33 @@
 
 @section('content')
     <div class="row p-4 pb-0 align-items-center rounded-3 border shadow-lg mt-5 mb-5">
-        {{-- <div class="col-lg-12 p-3 p-lg-5 pt-lg-3"> --}}
-            <h4 class="fw-bold lh-1 text-body-emphasis">آگهی آزمون استخدام</h4>
+            <h4 class="fw-bold lh-1 text-body-emphasis">ویرایش آگهی آزمون استخدام</h4>
             <div class="row">
                 <div class="col-sm-6">
                     <label class="form-label">@lang('public.recruitments name'): </label>
-                    {{-- <label class="form-label text-primary fw-bold">{{$recruitment->title}}</label> --}}
                     <label class="form-label text-primary fw-bold"></label>
                 </div>
 
                 <div class="col-md-6">
                     <label class="form-label">ظرفیت آزمون: </label>
-                    {{-- <label class="form-label text-primary fw-bold">{{$recruitment->total}} نفر</label> --}}
                     <label class="form-label text-primary fw-bold"></label>
                 </div>
 
                 <div class="mb-3">
                     <div class="mb-3">
                     <label class="form-label">شرایط آزمون: </label>
-                    {{-- <label class="form-label text-primary fw-bold">{{$recruitment->eligibility}}</label> --}}
                     <label class="form-label text-primary fw-bold"></label>
                     </div>
                 </div>
             </div>
-            {{-- <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-lg mt-3">بازگشت</a> --}}
-        {{-- </div> --}}
     </div>
 
     {{-- <div class="row g-5"> --}}
 
     <div class="row p-4 pb-0 align-items-center rounded-3 border mt-5 mb-3">
         <h5 class="fw-bold">ویرایش مشخصات شغل</h5>
-        <form class="needs-validation" id="addJob" method="POST" action="{{ route('condition.edit', $condition->id) }}">
+        <form class="needs-validation" id="addJob" method="POST" action="{{ route('condition.update', $condition->id) }}">
+            @method('put')
             @csrf
             <script type="text/javascript">
                 let works = {!! $works->toJson() !!};
@@ -59,7 +54,7 @@
                     <label for="grade" class="form-label">حداقل مقطع تحصیلی</label>
                     <select class="form-select" id="grade" name="grade" value="">
                         {{-- @foreach ($works as $work)
-                            <option value="{{$work->education}}" @if ($work->title == $condition->job_title) selected @endif>{{$work->title}}</option>
+                            <option value="{{$work->id}}" @if ($work->education == $condition->grade) selected @endif>{{$work->education}}</option>
                         @endforeach --}}
                     </select>
                     <div class="invalid-feedback">
@@ -129,10 +124,9 @@
                 <div class="col-md-4" id="capacity2">
                     <label for="city" class="form-label">شهر</label>
                     <select class="form-select" id="city" name="city" value="">
-                        @foreach ($cities as $city)
-                            <option value="{{$city->id}}">{{$city->name}}</option>
+                        {{-- @foreach ($cities as $city)
                             <option value="{{$city->id}}" @if ($city->name == $condition->city) selected @endif>{{$city->name}}</option>
-                        @endforeach
+                        @endforeach --}}
                     </select>
                     <div class="invalid-feedback">
                         Please provide a valid state.

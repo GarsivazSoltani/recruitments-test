@@ -84,6 +84,7 @@ class RecruitmentController extends Controller
 
     public function destroy($id)
     {
+        dd('garsi');
         // DB::table('recruitments')->where('id', $id)->delete();
         Recruitment::find($id)->delete();
         return back();
