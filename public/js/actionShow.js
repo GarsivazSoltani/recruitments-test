@@ -18,7 +18,6 @@ careerField.addEventListener('change', function(e){
     generate.generateField(e.target.value, works, null);
 });
 
-
 // اتصال استان و شهر
 const state = document.getElementById('state');
 state.addEventListener('change', function(e){

@@ -13,7 +13,6 @@ const cours = document.getElementById('cours');
 const capacityAll = document.getElementById('capacityAll');
 
 export function generateField(id, datas){
-    console.log('grade', condition);
     datas.forEach(data => {
         if (id == data.id) {
             fillComboBox(data.certificate, field, condition.field_of_study); // پرکردن آیتم مدرک تحصیلی
@@ -23,10 +22,9 @@ export function generateField(id, datas){
             fillComboBox(data.task, task, false); // پرکردن آیتم وظایف و مسئولیت‌ها
             fillComboBox(data.skill, skill, false); // پرکردن آیتم مهارت‌ها
             fillComboBox(data.cours, cours, false); // پرکردن آیتم دوره‌های آموزشی
-            console.log('gary:', condition.capacity);
-            // let str = JSON.parse(condition.capacity);
-            // console.log('Garsi:', str);
-            capacityAll.innerHTML = Number(5);
+            if(condition.capacity){
+                capacityAll.value = condition.capacity[0]; // پرکردن آیتم ظرفیت کل
+            }
         }
     });
 }

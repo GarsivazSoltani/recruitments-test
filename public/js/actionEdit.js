@@ -7,7 +7,6 @@ console.log('لیست شغل‌ها');
 // console.log(condition); // جدول استان‌ها
 
 const city = document.getElementById('city');
-// condition.grade
 generate.generateField(condition.work_id, works);
 // fillTable.generateTableRow(condition);
 
@@ -15,7 +14,6 @@ const careerField = document.getElementById('careerField');
 careerField.addEventListener('change', function(e){
     generate.generateField(e.target.value, works);
 });
-
 
 // اتصال استان و شهر
 const state = document.getElementById('state');

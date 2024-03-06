@@ -2,7 +2,7 @@ console.log('ساختن جدول');
 
 const addTableRow = document.getElementById('rowTableJob');
 export function generateTableRow(data){
-    console.log('table:', data);
+    // console.log('table:', data);
     data.forEach((item, index) => {
         let makeRow = document.createElement('tr'); // ساختن یک سطر
 
