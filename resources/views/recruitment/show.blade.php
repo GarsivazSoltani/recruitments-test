@@ -110,6 +110,7 @@
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="SwitchCapacity" checked>
                     <label class="form-check-label" for="SwitchCapacity">ظرفیت بر اساس استان</label>
+                    <input type="hidden" id="cityCheck" name="cityCheck" value="true">
                 </div>
 
                 <div class="col-md-4" id="capacity1">

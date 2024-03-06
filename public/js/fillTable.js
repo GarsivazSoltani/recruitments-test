@@ -13,13 +13,12 @@ export function generateTableRow(data){
         generateTableColumn(makeRow, item.capacity[0], false); // ساختن ستون ظرفیت
 
         let column = document.createElement('th'); // ساختن ستون ظرفیت
-        // let div = document.createElement('div'); // ساختن ستون ظرفیت
-        // div.classList.add('d-flex', 'align-items-center');
-        // column.append(div); // اضافه کردن ستون به سطر
         makeRow.append(column); // اضافه کردن ستون به سطر
-        generateButton(column, item.id, 'ویرایش', 'btn-warning', 'edit'); // ساختن دکمه ویرایش
-        // generateButton(column, item.id, 'حذف', 'btn-danger', 'delete'); // ساختن دکمه حذف
-        generateDeleteButton(column, item.id, 'حذف', 'btn-danger', 'delete'); // ساختن دکمه حذف
+        let div = document.createElement('div'); // ساختن ستون ظرفیت
+        div.classList.add('d-flex', 'align-items-center');
+        column.append(div); // اضافه کردن ستون به سطر
+        generateButton(div, item.id, 'ویرایش', 'btn-warning', 'edit'); // ساختن دکمه ویرایش
+        generateDeleteButton(div, item.id, 'حذف', 'btn-danger', 'delete'); // ساختن دکمه حذف
 
         addTableRow.append(makeRow); // اضافه کردن سطر به جدول
     });
@@ -37,7 +36,7 @@ function generateTableColumn(row, data, scope)
 
 function generateButton(column, id, title, color, btnAction){
     let btn = document.createElement('a'); // ساختن دکمه
-    btn.classList.add('btn', 'm-1', color);
+    btn.classList.add('btn', 'btn-sm', 'm-1', color);
     btn.innerHTML = title;
     // if (btnAction == 'edit') {
     //     btn.href = `../condition/${id}/edit`;

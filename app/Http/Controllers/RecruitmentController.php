@@ -102,11 +102,13 @@ class RecruitmentController extends Controller
             // dd('hast');
         }
 
-
         $work = Work::find($request->careerField);
         $stateName = Province::find($request->state);
         $cityName = City::find($request->city);
-
+        if ($request->cityCheck == "true") {
+            $cityName->name = "";
+        }
+        
         $recruitment->conditions()->create([
             'job_title' => $work->title, // عنوان شغلی
             'field_of_study' => $request->field, // رشته تحصیلی
