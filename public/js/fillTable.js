@@ -13,16 +13,13 @@ export function generateTableRow(data){
         generateTableColumn(makeRow, item.capacity[0], false); // ساختن ستون ظرفیت
 
         let column = document.createElement('th'); // ساختن ستون ظرفیت
-        let div = document.createElement('div'); // ساختن ستون ظرفیت
-
+        // let div = document.createElement('div'); // ساختن ستون ظرفیت
         // div.classList.add('d-flex', 'align-items-center');
         // column.append(div); // اضافه کردن ستون به سطر
-
         makeRow.append(column); // اضافه کردن ستون به سطر
         generateButton(column, item.id, 'ویرایش', 'btn-warning', 'edit'); // ساختن دکمه ویرایش
-        generateButton(column, item.id, 'حذف', 'btn-danger', 'delete'); // ساختن دکمه حذف
-        // generateDeleteButton(column, item.id, 'حذف', 'btn-danger', 'delete'); // ساختن دکمه حذف
-
+        // generateButton(column, item.id, 'حذف', 'btn-danger', 'delete'); // ساختن دکمه حذف
+        generateDeleteButton(column, item.id, 'حذف', 'btn-danger', 'delete'); // ساختن دکمه حذف
 
         addTableRow.append(makeRow); // اضافه کردن سطر به جدول
     });
@@ -55,7 +52,7 @@ function generateButton(column, id, title, color, btnAction){
 
 function generateDeleteButton(column, id, name, color, btnAction){
     let myform = document.createElement("form");
-    myform.action = `../condition/${id}/delete`;
+    myform.action = `../condition/${id}`;
     myform.method = "POST";
     myform.classList.add('mt-3');
 

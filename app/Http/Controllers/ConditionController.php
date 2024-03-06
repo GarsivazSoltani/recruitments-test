@@ -61,9 +61,9 @@ class ConditionController extends Controller
 
     public function destroy($id)
     {
-        dd('123');
-        // Conditions::find($id)->delete();
-        // return back();
+        // dd('123');
+        Conditions::find($id)->delete();
+        return back();
         return 'Delete: ' . $id;
     }
 }
