@@ -22,7 +22,7 @@
     @include('partials.footer')
     {{-- <script src="/resources/js/app.js"></script> --}}
     {{-- @vite('resources/js/app.js') --}}
-    {{-- <script src="js/bootstrapV5.js"></script> --}}
+    <script src="{{ asset('js/bootstrap.js') }}"></script>
 </body>
 
 </html>

@@ -1,36 +1,30 @@
-import * as generate from "./fillElements.js";
-import * as fillTable from "./fillTable.js";
+import * as generate from "../fillElements.js";
+import * as fillTable from "../fillTable.js";
 
 console.log('لیست شغل‌ها');
 // console.log(works); // جدول مشاغل
 // console.log(cities); // جدول استان‌ها
-// console.log(condition); // جدول مشاغل
-// console.log(recruitmentID); // شناسه آزمون
+// console.log(condition); // جدول استان‌ها
 
 const city = document.getElementById('city');
-const state = document.getElementById('state');
-generate.generateField(1, works, null);
-generate.generateCity(state.value, city);
+generate.generateField(condition.work_id, works);
+// fillTable.generateTableRow(condition);
 
-// نمایش یا عدم نمایش لیست مشاغل
-if (!condition.capacity) {
-    fillTable.generateTableRow(condition);
-}
-
-// پر کردن لیست مشاغل
 const careerField = document.getElementById('careerField');
 careerField.addEventListener('change', function(e){
-    generate.generateField(e.target.value, works, null);
+    generate.generateField(e.target.value, works);
 });
 
 // اتصال استان و شهر
+const state = document.getElementById('state');
+generate.generateCity(state.value, city);
 state.addEventListener('change', function(e){
     let id = Number(e.target.value);
     generate.generateCity(id, city);
 });
 
 
-// مشخص کردن ظرفیت بر اساس شهر یا استان
+// مشخص کردن ظرفیت براساس شهر یا استان
 const SwitchCapacity = document.getElementById('SwitchCapacity');
 capacity2.setAttribute("class", 'd-none');
 SwitchCapacity.addEventListener('click', function(e){
@@ -63,20 +57,3 @@ function clearCapacity() {
     capacityWoman.value = '';
     capacityMan.value = '';
 };
-
-
-
-
-
-
-const cityCheck = document.getElementById('cityCheck');
-console.log(cityCheck.value);
-const btnJob = document.getElementById('addJob');
-btnJob.addEventListener("submit", function (e) {
-    // e.preventDefault();
-    if (SwitchCapacity.checked) {
-        cityCheck.value = true;
-    }else{
-        cityCheck.value = false;
-    }
-});

@@ -32,9 +32,9 @@
     {{-- <div class="row g-5"> --}}
 
     <div class="row p-4 pb-0 align-items-center rounded-3 border mt-5 mb-3">
-        <h5 class="fw-bold">درج مشخصات شغل</h5>
         <form class="needs-validation" id="addJob" method="POST" action="{{ route('recruitment.index') }}/{{$recruitment->id}}/conditions">
             @csrf
+            <h5 class="fw-bold">درج مشخصات شغل</h5>
             <script type="text/javascript">
                 let works = {!! $works->toJson() !!};
                 let cities = {!! $cities->toJson() !!};
@@ -75,37 +75,7 @@
                     </div>
                 </div>
 
-                <div class="mb-3">
-                    <label class="form-label">نوع شغل: </label>
-                    <label class="form-label badge bg-info text-dark" id="type"></label>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">تعریف: </label>
-                    <label class="form-label text-muted" id="title"></label>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">نمونه وظایف ومسئولیت‌ها: </label>
-                    <ul id="task"></ul>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">مهارت‌ها: </label>
-                    <ul id="skill"></ul>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">دوره‌های آموزشی: </label>
-                    <ul id="cours"></ul>
-                </div>
-
-                {{-- <div class="mb-3">
-                    <label class="form-label">ویژگی‌ها شخصیتی و رفتاری </label>
-                    <ul id="personality"></ul>
-                </div> --}}
-
-                <hr class="my-4">
+                {{-- <hr class="my-4"> --}}
 
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="SwitchCapacity" checked>
@@ -135,23 +105,12 @@
                     </div>
                 </div>
 
-                <hr class="my-4">
+                {{-- <hr class="my-4"> --}}
 
                 <div class="form-check form-switch">
                     <input class="form-check-input" type="checkbox" id="SwitchSex" checked>
                     <label class="form-check-label" for="SwitchSex">جنسیت بدون تفکیک</label>
                 </div>
-
-                <!-- <div class="col-md-4">
-                    <label for="sex" class="form-label">جنسیت</label>
-                    <select class="form-select" id="sex" name="sex" value="">
-                        <option>بدون تفکیک</option>
-                        <option>همراه با تفکیک</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Please provide a valid sex.
-                    </div>
-                </div> -->
 
                 <div class="col-md-4" id="sexAll">
                     <label for="capacityAll" class="form-label">ظرفیت</label>
@@ -178,12 +137,95 @@
                 </div>
             </div>
 
+
+
+            <div class="accordion mt-5" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1" aria-expanded="true" aria-controls="collapse1">
+                        نوع شغل
+                        </button>
+                    </h2>
+                    <div id="collapse1" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                        <label class="form-label badge bg-info text-dark" id="type"></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">
+                        تعریف
+                        </button>
+                    </h2>
+                    <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <label class="form-label text-muted" id="title"></label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                        نمونه وظایف ومسئولیت‌ها
+                        </button>
+                    </h2>
+                    <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul id="task"></ul>
+                        </div>
+                    </div>
+                </div>
+                                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                        مهارت
+                        </button>
+                    </h2>
+                    <div id="collapse4" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul id="skill"></ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
+                        مهارت
+                        </button>
+                    </h2>
+                    <div id="collapse5" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul id="cours"></ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
+                        ویژگی‌ها شخصیتی و رفتاری 
+                        </button>
+                    </h2>
+                    <div id="collapse6" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <ul id="personality"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <button class="btn btn-primary btn-lg mt-5" type="submit">ثبت شغل</button>
             <a href="{{ route('recruitment.index') }}" class="btn btn-warning btn-lg mt-5">بازگشت</a>
         </form>
     </div>
 
-    <div class="row g-5 mt-5" id="jobItems">
+    {{-- <div class="row g-5 mt-5" id="jobItems"> --}}
+    <div class="row p-4 pb-0 align-items-center rounded-3 border mt-5 mb-3" id="jobItems">
         <table class="table table-striped table-sm">
             <thead>
             <tr>

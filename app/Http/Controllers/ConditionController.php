@@ -15,10 +15,11 @@ class ConditionController extends Controller
     {
         $works = Work::all();
         $provinces = Province::all();
-        $cities = City::all();
-
+        $cities = City::all();        
         $condition = Conditions::find($id);
-        return view('conditions.edit', compact('condition', 'works', 'provinces', 'cities'));
+        $recruitment = Recruitment::find($condition->recruitment_id);
+
+        return view('conditions.edit', compact('condition', 'works', 'provinces', 'cities', 'recruitment'));
 
         // return 'Edit' . $id;
     }
@@ -50,20 +51,18 @@ class ConditionController extends Controller
         return redirect('recruitment/' . $condition->recruitment_id);
     }
 
-    public function delete($id)
-    {
-        $works = Work::all();
-        $provinces = Province::all();
-        $cities = City::all();
-        $condition = Conditions::find($id);
-        return view('conditions.delete', compact('condition', 'works', 'provinces', 'cities'));
-    }
+    // public function delete($id)
+    // {
+    //     $works = Work::all();
+    //     $provinces = Province::all();
+    //     $cities = City::all();
+    //     $condition = Conditions::find($id);
+    //     return view('conditions.delete', compact('condition', 'works', 'provinces', 'cities'));
+    // }
 
     public function destroy($id)
     {
-        // dd('123');
         Conditions::find($id)->delete();
         return back();
-        return 'Delete: ' . $id;
     }
 }
