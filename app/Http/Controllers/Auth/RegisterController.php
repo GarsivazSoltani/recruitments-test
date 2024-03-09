@@ -65,14 +65,14 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $this->validateRegisterForm($request); // اعتبار سنجی فرم ثبت نام
+        $this->validateForm($request); // اعتبار سنجی فرم ثبت نام
         $user = $this->create($request->all()); // ساختن کاربر جدید
         Auth::login($user); // ورود کاربر
         return redirect()->route('home.welcome')->with('registered', true);
         // return view('auth.home');
     }
 
-    protected function validateRegisterForm(Request $request)
+    protected function validateForm(Request $request)
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],

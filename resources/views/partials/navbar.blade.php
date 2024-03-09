@@ -15,7 +15,7 @@
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="auth-btn collapse justify-content-end navbar-collapse">
-                    <a class="btn btn-info  mr-2" href="{{ route('auth.login') }}">@lang('public.login')</a>
+                    <a class="btn btn-info  mr-2" href="{{ route('auth.login.form') }}">@lang('public.login')</a>
                     <a class="btn btn-info mr-2" href="{{ route('auth.register.form', ['id'=>1]) }}">@lang('public.register')</a>
             </div>
         @endguest
@@ -30,7 +30,7 @@
                         {{Auth::user()->name}}
                     </a>
                     <div class="dropdown-menu logout-btn" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">@lang('auth.logout')</a>
+                        <a class="dropdown-item" href="{{ route('auth.logout') }}">@lang('auth.logout')</a>
                     </div>
                 </li>
             </ul>

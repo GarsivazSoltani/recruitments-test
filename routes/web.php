@@ -1,11 +1,10 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\JobController;
 use App\Http\Controllers\RecruitmentController;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,12 +22,14 @@ Route::get('/', [HomeController::class, 'home'])->name('home.welcome');
 Route::prefix('auth')->group(function (){
     Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('auth.register.form');
     Route::post('register', [RegisterController::class, 'register'])->name('auth.register');
-    Route::get('login', [RegisterController::class, 'showLoginForm'])->name('auth.login.form');
+    Route::get('login', [LoginController::class, 'showLoginForm'])->name('auth.login.form');
+    Route::post('login', [LoginController::class, 'login'])->name('auth.login');
+    Route::get('logout', [LoginController::class, 'logout'])->name('auth.logout');
 });
 
-Route::get('logout', function(){
-    Auth::logout();
-});
+// Route::get('logout', function(){
+//     Auth::logout();
+// });
 
 // Route::get('register-test', [HomeController::class, 'registerTestForm'])->name('recruitments.register.test.form');
 // Route::post('register-test', [HomeController::class, 'registerTest'])->name('recruitments.register.test');
