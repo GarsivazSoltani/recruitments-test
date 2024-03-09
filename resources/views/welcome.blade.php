@@ -3,6 +3,8 @@
 @section('title', __('public.recruitments test'))
 
 @section('content')
+    @include('partials.alerts')
+    
     <div class="container mt-3">
         <div class="alert alert-warning" role="alert">
             <h4 class="alert-heading">شرایط آزمون استخدامی</h4>
