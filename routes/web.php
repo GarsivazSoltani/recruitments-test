@@ -17,7 +17,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('register', function(){
+    return view('auth.register');
+});
+
+Route::get('login', function (){
+    return view('auth.login');
+});
+
 Route::get('/', [HomeController::class, 'home'])->name('home.welcome');
+
 // Route::get('register-test', [HomeController::class, 'registerTestForm'])->name('recruitments.register.test.form');
 // Route::post('register-test', [HomeController::class, 'registerTest'])->name('recruitments.register.test');
 // Route::get('register-details', [HomeController::class, 'registerDetailsForm'])->name('recruitments.register.details.form');

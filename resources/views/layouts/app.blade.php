@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.rtl.css')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     {{-- @vite('resources/css/app.css') --}}
-    {{-- @yield('links') --}}
+    @yield('links')
     <title>@yield('title')</title>
 </head>
 
