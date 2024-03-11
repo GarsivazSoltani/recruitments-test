@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,13 +22,8 @@ class LoginController extends Controller
     */
 
     // use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+    use ThrottlesLogins;
+    // protected $maxAttempts = 2;
 
     /**
      * Create a new controller instance.
@@ -48,9 +44,16 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $this->validateForm($request); // اعتبار سنجی فرم ورود
+
+        if ($this->hasTooManyLoginAttempts($request)) {
+            return $this->sendLockoutResponse($request);
+        }
+
         if ($this->attempLogin($request)){
             return $this->sendSuccessResponse(); // درست بودن نام کاربری و رمز عبور
         }
+        $this->incrementLoginAttempts($request); // کسر کردن دفعات تلاش برای ورود
+
         return $this->sendLoginFailedResponse(); // اشتباه بودن نام کاربری یا رمز عبور
     }
 
@@ -83,5 +86,10 @@ class LoginController extends Controller
         session()->invalidate();
         Auth::logout();
         return redirect()->route('home.welcome');
+    }
+
+    protected function username()
+    {
+        return 'email';
     }
 }
