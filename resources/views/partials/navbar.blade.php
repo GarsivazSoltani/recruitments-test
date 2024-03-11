@@ -10,14 +10,10 @@
     </button>
     <div class="auth-btn collapse justify-content-end navbar-collapse">
         @guest
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="auth-btn collapse justify-content-end navbar-collapse">
-                    <a class="btn btn-info  mr-2" href="{{ route('auth.login.form') }}">@lang('public.login')</a>
-                    <a class="btn btn-info mr-2" href="{{ route('auth.register.form', ['id'=>1]) }}">@lang('public.register')</a>
-            </div>
+            {{-- <div class="auth-btn collapse justify-content-end navbar-collapse"> --}}
+                <a class="btn btn-info  mr-2" href="{{ route('auth.login.form') }}">@lang('public.login')</a>
+                <a class="btn btn-info mr-2" href="{{ route('auth.register.form', ['id'=>1]) }}">@lang('public.register')</a>
+            {{-- </div> --}}
         @endguest
         @auth
             <a class="btn btn-outline-info m-2" href="{{ route('home.welcome') }}">@lang('public.main page')</a>
@@ -30,7 +26,7 @@
                         {{Auth::user()->name}}
                     </a>
                     <div class="dropdown-menu logout-btn" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('auth.logout') }}">@lang('auth.logout')</a>
+                        <a class="dropdown-item" href="{{route('auth.logout')}}">@lang('auth.logout')</a>
                     </div>
                 </li>
             </ul>
