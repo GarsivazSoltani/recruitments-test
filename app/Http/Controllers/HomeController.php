@@ -11,6 +11,7 @@ class HomeController extends Controller
 {
     public function home()
     {
+        auth()->user()->givePermissionsTo(['add user']);
         return view('welcome');
     }
 

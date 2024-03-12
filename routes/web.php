@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecruitmentController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,9 @@ Route::prefix('auth')->group(function (){
     Route::get('logout', [LoginController::class, 'logout'])->name('auth.logout');
 });
 
-// Route::get('logout', function(){
-//     Auth::logout();
-// });
+Route::get('permission', function(){
+    // auth()->user()->givePermissionsTo('delete posts', 'delete users');
+});
 
 // Route::get('register-test', [HomeController::class, 'registerTestForm'])->name('recruitments.register.test.form');
 // Route::post('register-test', [HomeController::class, 'registerTest'])->name('recruitments.register.test');
