@@ -29,7 +29,9 @@ Route::prefix('auth')->group(function (){
 });
 
 Route::get('permission', function(){
-    // auth()->user()->givePermissionsTo('delete posts', 'delete users');
+    auth()->user()->refreshPermissions(['add user']);
+    // auth()->user()->withDrawPermissions(['add user']);
+    // auth()->user()->givePermissionsTo(['add user']);
 });
 
 // Route::get('register-test', [HomeController::class, 'registerTestForm'])->name('recruitments.register.test.form');
