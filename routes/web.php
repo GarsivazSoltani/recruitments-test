@@ -30,13 +30,16 @@ Route::prefix('auth')->group(function (){
 });
 
 Route::get('permission', function(){
-    auth()->user()->giveRolesTo(['admin', 'editor']);
+    dd(auth()->user()->hasRole('user'));
+    // auth()->user()->refreshRoles('user');
+    // auth()->user()->withDrawRoles('admin');
+    // auth()->user()->giveRolesTo('admin', 'editor');
     
     // dd(auth()->user()->can('add user'));
     // dd(auth()->user()->hasPermission('add user'));
-    // auth()->user()->refreshPermissions(['add user']);
-    // auth()->user()->withDrawPermissions(['add user']);
-    // auth()->user()->givePermissionsTo(['add user']);
+    // auth()->user()->refreshPermissions('add user');
+    // auth()->user()->withDrawPermissions('add user');
+    // auth()->user()->givePermissionsTo('add user');
 });
 
 Route::prefix('recruitment')->group(function (){
