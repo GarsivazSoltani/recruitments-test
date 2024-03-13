@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'home'])->name('home.welcome');
+
 Route::prefix('auth')->group(function (){
     Route::get('register', [RegisterController::class, 'showRegistrationForm'])->name('auth.register.form');
     Route::post('register', [RegisterController::class, 'register'])->name('auth.register');
@@ -29,15 +30,12 @@ Route::prefix('auth')->group(function (){
 });
 
 Route::get('permission', function(){
-    auth()->user()->refreshPermissions(['add user']);
+    dd(auth()->user()->can('add user'));
+    // dd(auth()->user()->hasPermission('add user'));
+    // auth()->user()->refreshPermissions(['add user']);
     // auth()->user()->withDrawPermissions(['add user']);
     // auth()->user()->givePermissionsTo(['add user']);
 });
-
-// Route::get('register-test', [HomeController::class, 'registerTestForm'])->name('recruitments.register.test.form');
-// Route::post('register-test', [HomeController::class, 'registerTest'])->name('recruitments.register.test');
-// Route::get('register-details', [HomeController::class, 'registerDetailsForm'])->name('recruitments.register.details.form');
-// Route::post('register-details', [HomeController::class, 'registerDetails'])->name('recruitments.register.details');
 
 Route::prefix('recruitment')->group(function (){
     // create
