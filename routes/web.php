@@ -30,7 +30,9 @@ Route::prefix('auth')->group(function (){
 });
 
 Route::get('permission', function(){
-    dd(auth()->user()->can('add user'));
+    auth()->user()->giveRolesTo(['admin', 'editor']);
+    
+    // dd(auth()->user()->can('add user'));
     // dd(auth()->user()->hasPermission('add user'));
     // auth()->user()->refreshPermissions(['add user']);
     // auth()->user()->withDrawPermissions(['add user']);
