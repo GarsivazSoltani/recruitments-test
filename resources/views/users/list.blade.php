@@ -21,11 +21,11 @@
                         <td> {{$user->email}} </td>
                         <td>
                             @foreach ($user->roles as $role)
-                                @if ($role->id == $user->id)
+                                {{-- @if ($role->id == $user->id) --}}
                                     <span class="badge bg-info text-dark"> {{$role->persian_name}} </span>
-                                @endif
+                                {{-- @endif --}}
                             @endforeach
-                            <td> <a href="#"> @lang('users.edit') </a>
+                            <td> <a href="{{ route('users.edit', $user->id) }}"> @lang('users.edit') </a>
                         </td>
                     </tr>
                 @empty

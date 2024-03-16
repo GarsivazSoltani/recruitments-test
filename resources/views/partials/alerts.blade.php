@@ -27,3 +27,9 @@
         @lang('auth.reset link failed')
     </div>
 @endif
+
+@if (session('success'))
+    <div class="alert alert-success">
+        @lang('users.success')
+    </div>
+@endif
