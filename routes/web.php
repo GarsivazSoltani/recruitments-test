@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecruitmentController;
+use App\Http\Controllers\UserController;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -28,22 +29,6 @@ Route::prefix('auth')->group(function (){
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('auth.login.form');
     Route::post('login', [LoginController::class, 'login'])->name('auth.login');
     Route::get('logout', [LoginController::class, 'logout'])->name('auth.logout');
-});
-
-Route::get('permission', function(){
-    Role::find(1)->givePermissionsTo('delete users');
-    auth()->user()->giveRolesTo('admin');
-    dd(auth()->user()->can('delete users'));
-    // dd(auth()->user()->hasRole('user'));
-    // auth()->user()->refreshRoles('user');
-    // auth()->user()->withDrawRoles('admin');
-    // auth()->user()->giveRolesTo('admin', 'editor');
-    
-    // dd(auth()->user()->can('add user'));
-    // dd(auth()->user()->hasPermission('add user'));
-    // auth()->user()->refreshPermissions('add user');
-    // auth()->user()->withDrawPermissions('add user');
-    // auth()->user()->givePermissionsTo('add user');
 });
 
 Route::prefix('recruitment')->group(function (){
@@ -75,4 +60,28 @@ Route::prefix('condition')->group(function (){
     // delete
     // Route::get('{id}/delete', [ConditionController::class, 'delete'])->name('condition.delete');
     Route::delete('{id}', [ConditionController::class, 'destroy']);
+});
+
+Route::prefix('panel')->group(function (){
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
+});
+
+
+
+
+Route::get('permission', function(){
+    // Role::find(1)->givePermissionsTo('delete users');
+    // auth()->user()->giveRolesTo('admin');
+    // dd(auth()->user()->can('delete users'));
+
+    // dd(auth()->user()->hasRole('user'));
+    // auth()->user()->refreshRoles('admin');
+    // auth()->user()->withDrawRoles('admin');
+    // auth()->user()->giveRolesTo('admin', 'editor');
+    
+    // dd(auth()->user()->can('add user'));
+    // dd(auth()->user()->hasPermission('add user'));
+    // auth()->user()->refreshPermissions('add user');
+    // auth()->user()->withDrawPermissions('add user');
+    // auth()->user()->givePermissionsTo('add user');
 });
