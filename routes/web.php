@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ConditionController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecruitmentController;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -30,7 +31,10 @@ Route::prefix('auth')->group(function (){
 });
 
 Route::get('permission', function(){
-    dd(auth()->user()->hasRole('user'));
+    Role::find(1)->givePermissionsTo('delete users');
+    auth()->user()->giveRolesTo('admin');
+    dd(auth()->user()->can('delete users'));
+    // dd(auth()->user()->hasRole('user'));
     // auth()->user()->refreshRoles('user');
     // auth()->user()->withDrawRoles('admin');
     // auth()->user()->giveRolesTo('admin', 'editor');

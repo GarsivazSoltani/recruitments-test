@@ -36,7 +36,16 @@ trait HasPermissions
 
     public function hasPermission(Permission $permission) // چک کردن سطح دسترسی کاربر
     {
-        return $this->permissions->contains($permission);
+        return $this->hasPermissionThroughRole($permission) || $this->permissions->contains($permission);
+    }
+
+    protected function hasPermissionThroughRole(Permission $permission) // چک کردن سطح دسترسی از طریق رول
+    {
+        // dd($permission->roles);
+        foreach ($permission->roles as $role) {
+            if ($this->roles->contains($role)) return true;
+        }
+        return false;
     }
     
     protected function getAllPermissions(array $permissions) // تبدیل سطح دسترسی‌ها به آرایه یک سطری
