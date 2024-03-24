@@ -63,7 +63,8 @@ Route::prefix('condition')->group(function (){
     Route::delete('{id}', [ConditionController::class, 'destroy']);
 });
 
-Route::prefix('panel')->group(function (){
+// Route::middleware('role:admin')->prefix('panel')->group(function (){
+Route::middleware('can:show panel')->prefix('panel')->group(function (){
     Route::get('users', [UserController::class, 'index'])->name('users.index');
     Route::get('users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
     Route::post('users/{user}/edit', [UserController::class, 'update'])->name('users.update');
