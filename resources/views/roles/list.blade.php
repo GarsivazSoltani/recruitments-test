@@ -47,7 +47,7 @@
 							<tr>
 								<td> {{$role->name}} </td>
 								<td> <span class="badge bg-info text-dark"> {{$role->persian_name}} </span> </td>
-								<td> <a href=""> @lang('users.edit') </a> </td>
+								<td> <a href="{{ route('roles.edit', $role->id) }}"> @lang('users.edit') </a> </td>
 							</tr>
 						@empty
 							<p>@lang('users.there are not any role')</p>	

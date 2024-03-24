@@ -6,6 +6,13 @@ import 'bootstrap';
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
+try {
+    window.Popper = require('popper.js').default;
+    require('bootstrap');
+} catch (error) {
+    
+}
+
 import axios from 'axios';
 window.axios = axios;
 
