@@ -25,8 +25,10 @@
                             {{Auth::user()->name}}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-light dropdown-menu-end" aria-labelledby="navbarLightDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">مدیریت</a></li>
-                            <li><hr class="dropdown-divider"></li>
+                            @can('show panel')
+                                <li><a class="dropdown-item" href="{{ route('roles.index') }}">مدیریت</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                            @endcan
                             <li><a class="dropdown-item" href="{{route('auth.logout')}}">@lang('auth.logout')</a></li>
                         </ul>
                     </li>
